@@ -173,3 +173,7 @@ msgstr ""
 msgctxt "#30040"
 msgid "Add enhanced mouse keymap for magazines' pages viewing"
 msgstr ""
+
+msgctxt "#30041"
+msgid "Use alternative playback method for NETV2 Documentaries"
+msgstr ""

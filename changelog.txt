@@ -1,3 +1,6 @@
+1.5.7 (27-11-2017)
+- Utilized different method for playing documentaries (former remains optional)
+
 1.5.6 (24-11-2017)
 - Changed naming scheme of magazines' filenames (hopefully to fix thumbnails' creation issues)
 - Cosmetics

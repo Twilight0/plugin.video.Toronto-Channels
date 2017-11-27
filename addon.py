@@ -34,9 +34,15 @@ addItem = xbmcplugin.addDirectoryItem
 endDir = xbmcplugin.endOfDirectory
 transpath = xbmc.translatePath
 datapath = transpath(addon.getAddonInfo("profile")).decode("utf-8")
+
+if not xbmcvfs.exists(datapath):
+    xbmcvfs.mkdirs(datapath)
+
 dialog = xbmcgui.Dialog()
 infoLabel = xbmc.getInfoLabel
 fp = infoLabel('Container.FolderPath')
+# xbmcplayer = xbmc.Player
+# player = xbmcplayer().play
 player = xbmc.Player().play
 
 # Misc variables:
@@ -91,10 +97,32 @@ def play_item(path):
 
 def play_docs():
 
-    from random import randint
-    integer = randint(0, 1054)
+    if addon.getSetting('netv2_docs') == 'false':
 
-    xbmc.executebuiltin('PlayMedia({0},playoffset={1})'.format(YT_Doc_playlist, integer))
+        from random import shuffle
+
+        if not xbmcvfs.exists(datapath):
+            xbmcvfs.mkdirs(datapath)
+
+        docs_m3u = join(datapath, 'docs.m3u')
+
+        play_list = open_url(YT_Doc_playlist)
+        videos = play_list.splitlines()[1:][1::2]
+        shuffle(videos)
+        playlist = '#EXTM3U\n#EXTINF:0,Youtube\n' + '\n#EXTINF:0,Youtube\n'.join(videos)
+
+        with open(docs_m3u, 'w') as f:
+            f.write(playlist)
+
+        player(item=docs_m3u)
+
+    else:
+
+        from random import randint
+
+        integer = randint(0, 1054)
+
+        xbmc.executebuiltin('PlayMedia({0},playoffset={1})'.format(YT_Doc_playlist, integer))
 
 
 def magazine_list():

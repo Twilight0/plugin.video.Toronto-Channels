@@ -173,3 +173,7 @@ msgstr "Επαναφορά"
 msgctxt "#30040"
 msgid "Add enhanced mouse keymap for magazines' pages viewing"
 msgstr "Ενεργοποίηση βελτιωμένου χάρτη για ποντίκι κατά την θέαση σελίδων περιοδικών"
+
+msgctxt "#30041"
+msgid "Use alternative playback method for NETV2 Documentaries"
+msgstr "Κάνε χρήση εναλλακτικής μεθόδου αναπαραγωγής για το ΝΕΤV2"

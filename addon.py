@@ -97,7 +97,7 @@ def play_item(path):
 
 def play_docs():
 
-    if addon.getSetting('netv2_docs') == 'false':
+    if addon.getSetting('netv2_docs') == 'true':
 
         from random import shuffle
 

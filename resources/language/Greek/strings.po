@@ -177,3 +177,7 @@ msgstr "Ενεργοποίηση βελτιωμένου χάρτη για πον
 msgctxt "#30041"
 msgid "Use alternative playback method for NETV2 Documentaries"
 msgstr "Κάνε χρήση εναλλακτικής μεθόδου αναπαραγωγής για το ΝΕΤV2"
+
+msgctxt "#30042"
+msgid "Show Canadian Ethnic Web Radio"
+msgstr "Δείξε το Καναδικό Έθνικ Διαδικτυακό Ραδιόφωνο"

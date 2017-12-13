@@ -177,3 +177,7 @@ msgstr ""
 msgctxt "#30041"
 msgid "Use alternative playback method for NETV2 Documentaries"
 msgstr ""
+
+msgctxt "#30042"
+msgid "Show Canadian Ethnic Web Radio"
+msgstr ""

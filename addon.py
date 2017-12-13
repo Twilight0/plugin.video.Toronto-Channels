@@ -41,8 +41,6 @@ if not xbmcvfs.exists(datapath):
 dialog = xbmcgui.Dialog()
 infoLabel = xbmc.getInfoLabel
 fp = infoLabel('Container.FolderPath')
-# xbmcplayer = xbmc.Player
-# player = xbmcplayer().play
 player = xbmc.Player().play
 
 # Misc variables:
@@ -52,6 +50,7 @@ NETVToronto_img = join(addonart, 'NETV_Toronto.png')
 NETVToronto_2_img = join(addonart, 'NETV_Toronto_2.png')
 Cannali_img = join(addonart, 'CANNALI_WEB_MUSIC.png')
 Melodia_img = join(addonart, 'RADIO_MELODIA_TORONTO.png')
+CEWR_img = join(addonart, 'CANADIAN_ETHNIC_WEB_RADIO.jpg')
 Life_img = join(addonart, 'LIFEHD.png')
 Eugo24_img = join(addonart, 'EUGO24.png')
 Settings_img = join(addonart, 'settings.png')
@@ -75,10 +74,11 @@ else:
     Life_url = 'http://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
 
 Melodia_url = 'http://149.202.208.214:9086/live'
+CEWR_url = 'http://147.135.252.4:10221/'
 YT_Channel = 'UCKXFDK9dRGcnwr7mWmzoY2w'
 YT_Doc_playlist = 'http://alivegr.net/raw/docs.m3u'
-base_url = 'http://alivegr.net/bci_mags/'
-index_url = urlparse.urljoin(base_url, 'index.txt')
+mags_base_url = 'http://alivegr.net/bci_mags/'
+index_url = urlparse.urljoin(mags_base_url, 'index.txt')
 
 
 # Handlers:
@@ -140,7 +140,7 @@ def magazine_list():
     elif len(number) == 2:
         number = '0' + number
 
-    voice_img = urlparse.urljoin(base_url, 'mag_thumb_{0}.jpg'.format(number))
+    voice_img = urlparse.urljoin(mags_base_url, 'mag_thumb_{0}.jpg'.format(number))
 
     magazines = []
 
@@ -149,7 +149,7 @@ def magazine_list():
         title = line.replace('Volume', language(30025))
 
         image = line.partition(' - ')[0].replace('Volume ', 'vol')
-        image = urlparse.urljoin(base_url, image + '/thumbs' + '/01.jpg')
+        image = urlparse.urljoin(mags_base_url, image + '/thumbs' + '/01.jpg')
 
         url = '{0}?action=mag_index&url={1}'.format(sysaddon, image.partition('/thumbs')[0])
 
@@ -291,6 +291,17 @@ def main_menu():
     elif addon.getSetting('melodia') == 'false':
         pass
 
+    # Canadian Ethnic Web Radio
+    if addon.getSetting('cewr') == 'true':
+        url7 = '{0}?action=play&url={1}'.format(sysaddon, CEWR_url)
+        li7 = xbmcgui.ListItem(label='Canadian Ethnic Web Radio', iconImage=CEWR_img)
+        li7.setArt({'poster': CEWR_img, 'thumb': CEWR_img, 'fanart': addonfanart})
+        li7.setInfo('music', {'title': 'Canadian Ethnic Web Radio', 'comment': 'Canadian Ethnic Web Radio', 'genre': 'Live'})
+        li7.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url7, listitem=li7, isFolder=False)
+    elif addon.getSetting('cewr') == 'false':
+        pass
+
     # Voice Life & Style
     if addon.getSetting('voice') == 'true':
         url7 = '{0}?action={1}'.format(sysaddon, 'mags_addon')
@@ -345,12 +356,22 @@ def setup_iptv():
             dialog.notification(addonname, language(30016), sound=False)
 
 
-def melodia_player():
+def radio_player():
 
-    listitem = xbmcgui.ListItem(thumbnailImage=Melodia_img)
-    listitem.setInfo('music', {'title': 'Radio Melodia Toronto', 'genre': 'Greek Music'})
-    player(item=Melodia_url, listitem=listitem)
+    lista = ['Radio Melodia Toronto', 'Canadian Ethnic Web Radio']
 
+    selection = dialog.select(addonname, lista)
+
+    if selection == 0:
+        listitem = xbmcgui.ListItem(thumbnailImage=Melodia_img)
+        listitem.setInfo('music', {'title': lista[0], 'genre': 'Greek Music'})
+        player(item=Melodia_url, listitem=listitem)
+    elif selection == 1:
+        listitem = xbmcgui.ListItem(thumbnailImage=CEWR_img)
+        listitem.setInfo('music', {'title': lista[1], 'genre': 'Ethnic Music'})
+        player(item=CEWR_url, listitem=listitem)
+    else:
+        xbmc.executebuiltin('ActivateWindow(videos,"plugin://plugin.video.Toronto-Channels/",return)')
 
 def mags_addon():
 
@@ -442,7 +463,7 @@ def keymap_edit():
 if action is None:
 
     if 'audio' in fp:
-        melodia_player()
+        radio_player()
     elif 'image' in fp:
         mags_index()
     else:

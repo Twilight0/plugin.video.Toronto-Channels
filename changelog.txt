@@ -1,3 +1,7 @@
+1.6.0 (13-12-2017)
+- Added Cannadian Web Radio
+- Launching as radio addon now lets you choose radio stream
+
 1.5.8 (11-12-2017)
 - Changed HLS default preference to true
 - Changed NETV2 Docs default preference to true and reversed boolean conditional

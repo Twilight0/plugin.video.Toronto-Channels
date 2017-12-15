@@ -1,3 +1,6 @@
+1.6.1 (15-12-2017)
+- Url corrected for thumbs on mags index
+
 1.6.0 (13-12-2017)
 - Added Cannadian Web Radio
 - Launching as radio addon now lets you choose radio stream

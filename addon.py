@@ -74,7 +74,7 @@ else:
     Life_url = 'http://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
 
 Melodia_url = 'http://149.202.208.214:9086/live'
-CEWR_url = 'http://147.135.252.4:10221/'
+CEWR_url = 'http://147.135.252.4:10221/live'
 YT_Channel = 'UCKXFDK9dRGcnwr7mWmzoY2w'
 YT_Doc_playlist = 'http://alivegr.net/raw/docs.m3u'
 mags_base_url = 'http://alivegr.net/bci_mags/'
@@ -149,7 +149,7 @@ def magazine_list():
         title = line.replace('Volume', language(30025))
 
         image = line.partition(' - ')[0].replace('Volume ', 'vol')
-        image = urlparse.urljoin(mags_base_url, image + '/thumbs' + '/01.jpg')
+        image = urlparse.urljoin(mags_base_url, image + '/thumbs' + '/thumb-01.jpg')
 
         url = '{0}?action=mag_index&url={1}'.format(sysaddon, image.partition('/thumbs')[0])
 

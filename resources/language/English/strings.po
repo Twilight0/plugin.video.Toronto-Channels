@@ -175,9 +175,13 @@ msgid "Add enhanced mouse keymap for magazines' pages viewing"
 msgstr ""
 
 msgctxt "#30041"
-msgid "Use alternative playback method for NETV2 Documentaries"
+msgid ""
 msgstr ""
 
 msgctxt "#30042"
 msgid "Show Canadian Ethnic Web Radio"
+msgstr ""
+
+msgctxt "#30043"
+msgid "Show NETV Toronto 3"
 msgstr ""

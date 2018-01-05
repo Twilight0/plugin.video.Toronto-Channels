@@ -48,6 +48,7 @@ addonicon = join(addonpath, 'icon.png')
 addonart = join(addonpath, 'resources/media')
 NETVToronto_img = join(addonart, 'NETV_Toronto.png')
 NETVToronto_2_img = join(addonart, 'NETV_Toronto_2.png')
+NETVToronto_3_img = join(addonart, 'NETV_Toronto_3.png')
 Cannali_img = join(addonart, 'CANNALI_WEB_MUSIC.png')
 Melodia_img = join(addonart, 'RADIO_MELODIA_TORONTO.png')
 CEWR_img = join(addonart, 'CANADIAN_ETHNIC_WEB_RADIO.jpg')
@@ -61,22 +62,23 @@ if addon.getSetting('hls') == 'false':
 
     NETVToronto_url = 'rtmp://live.netvtoronto.com/NetvToronto/NetvToronto'
     NETV_Toronto_2_url = 'rtmp://162.219.176.210/live/eugo242017p1a'
+    NETV_Toronto_3_url = 'rtmp://live.streams.ovh:1935/LIFEHD/LIFEHD'
     Eugo24_url = 'rtmp://162.219.176.210:18935/live/eugo242017p1a'
     Cannali_url = 'rtmp://live.streams.ovh/cannali/cannali'
-    Life_url = 'rtmp://live.streams.ovh:1935/LIFEHD/LIFEHD'
 
 else:
 
     NETVToronto_url = 'http://live.netvtoronto.com:1935/NetvToronto/NetvToronto/playlist.m3u8'
     NETV_Toronto_2_url = 'http://162.219.176.210/live/eugo242017p1a/playlist.m3u8'
+    NETV_Toronto_3_url = 'http://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
     Eugo24_url = 'http://162.219.176.210:18935/live/eugo242017p1a/playlist.m3u8'
     Cannali_url = 'http://live.streams.ovh:1935/cannali/cannali/playlist.m3u8'
-    Life_url = 'http://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
 
 Melodia_url = 'http://149.202.208.214:9086/live'
 CEWR_url = 'http://147.135.252.4:10221/live'
 YT_Channel = 'UCKXFDK9dRGcnwr7mWmzoY2w'
 YT_Doc_playlist = 'http://alivegr.net/raw/docs.m3u'
+YT_Kids_playlist = 'http://alivegr.net/raw/kids.m3u'
 mags_base_url = 'http://alivegr.net/bci_mags/'
 index_url = urlparse.urljoin(mags_base_url, 'index.txt')
 
@@ -95,34 +97,24 @@ def play_item(path):
     xbmcplugin.setResolvedUrl(syshandle, True, listitem=li)
 
 
-def play_docs():
+def play_yt_m3u(link):
 
-    if addon.getSetting('netv2_docs') == 'true':
+    from random import shuffle
 
-        from random import shuffle
+    if not xbmcvfs.exists(datapath):
+        xbmcvfs.mkdirs(datapath)
 
-        if not xbmcvfs.exists(datapath):
-            xbmcvfs.mkdirs(datapath)
+    m3u_file = join(datapath, link.rpartition('/')[2])
 
-        docs_m3u = join(datapath, 'docs.m3u')
+    play_list = open_url(link)
+    videos = play_list.splitlines()[1:][1::2]
+    shuffle(videos)
+    playlist = '#EXTM3U\n#EXTINF:0,Youtube\n' + '\n#EXTINF:0,Youtube\n'.join(videos)
 
-        play_list = open_url(YT_Doc_playlist)
-        videos = play_list.splitlines()[1:][1::2]
-        shuffle(videos)
-        playlist = '#EXTM3U\n#EXTINF:0,Youtube\n' + '\n#EXTINF:0,Youtube\n'.join(videos)
+    with open(m3u_file, 'w') as f:
+        f.write(playlist)
 
-        with open(docs_m3u, 'w') as f:
-            f.write(playlist)
-
-        player(item=docs_m3u)
-
-    else:
-
-        from random import randint
-
-        integer = randint(0, 1054)
-
-        xbmc.executebuiltin('PlayMedia({0},playoffset={1})'.format(YT_Doc_playlist, integer))
+    player(item=m3u_file)
 
 
 def magazine_list():
@@ -217,47 +209,58 @@ def main_menu():
 
     # NETV Toronto
     if addon.getSetting('netv') == 'true':
-        url1 = '{0}?action=play&url={1}'.format(sysaddon, NETVToronto_url)
-        li1 = xbmcgui.ListItem(label='NETV Toronto', iconImage=NETVToronto_img)
-        li1.setArt({'poster': NETVToronto_img, 'thumb': NETVToronto_img, 'fanart': addonfanart})
-        li1.setInfo('video', {'title': 'NETV Toronto', 'plot': language(30006), 'genre': 'Live'})
-        li1.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url1, listitem=li1, isFolder=False)
+        url0 = '{0}?action=play&url={1}'.format(sysaddon, NETVToronto_url)
+        li0 = xbmcgui.ListItem(label='NETV Toronto', iconImage=NETVToronto_img)
+        li0.setArt({'poster': NETVToronto_img, 'thumb': NETVToronto_img, 'fanart': addonfanart})
+        li0.setInfo('video', {'title': 'NETV Toronto', 'plot': language(30006), 'genre': 'Live'})
+        li0.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url0, listitem=li0, isFolder=False)
     elif addon.getSetting('netv') == 'false':
         pass
 
     # NETV Toronto 2
     if addon.getSetting('netv2') == 'true':
-        # url2 = '{0}?action=play&url={1}'.format(sysaddon, NETV_Toronto_2_url)
-        url2 = '{0}?action=play_docs'.format(sysaddon)
-        li2 = xbmcgui.ListItem(label='NETV Toronto 2', iconImage=NETVToronto_2_img)
-        li2.setArt({'poster': NETVToronto_2_img, 'thumb': NETVToronto_2_img, 'fanart': addonfanart})
-        li2.setInfo('video', {'title': 'NETV Toronto 2', 'plot': language(30019), 'genre': 'Live'})
-        li2.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url2, listitem=li2, isFolder=False)
+        # url1 = '{0}?action=play&url={1}'.format(sysaddon, NETV_Toronto_2_url)
+        url1 = '{0}?action=play_yt_m3u&url={1}'.format(sysaddon, YT_Doc_playlist)
+        li1 = xbmcgui.ListItem(label='NETV Toronto 2', iconImage=NETVToronto_2_img)
+        li1.setArt({'poster': NETVToronto_2_img, 'thumb': NETVToronto_2_img, 'fanart': addonfanart})
+        li1.setInfo('video', {'title': 'NETV Toronto 2', 'plot': language(30019), 'genre': 'Live'})
+        li1.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url1, listitem=li1, isFolder=False)
     elif addon.getSetting('netv2') == 'false':
         pass
 
-    # Eugo24
-    if addon.getSetting('eugo24') == 'true':
-        url3 = '{0}?action=play&url={1}'.format(sysaddon, Eugo24_url)
-        li3 = xbmcgui.ListItem(label='Eugo24', iconImage=Eugo24_img)
-        li3.setArt({'poster': Eugo24_img, 'thumb': Eugo24_img, 'fanart': addonfanart})
-        li3.setInfo('video', {'title': 'Eugo24', 'plot': language(30021), 'genre': 'Live'})
-        li3.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url3, listitem=li3, isFolder=False)
-    elif addon.getSetting('eugo24') == 'false':
+    # NETV Toronto 3
+    if addon.getSetting('netv3') == 'true':
+        url2 = '{0}?action=play&url={1}'.format(sysaddon, NETV_Toronto_3_url)
+        li2 = xbmcgui.ListItem(label='NETV Toronto 3', iconImage=NETVToronto_3_img)
+        li2.setArt({'poster': NETVToronto_3_img, 'thumb': NETVToronto_3_img, 'fanart': addonfanart})
+        li2.setInfo('video', {'title': 'NETV Toronto 3', 'plot': '', 'genre': 'Live'})
+        li2.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url2, listitem=li2, isFolder=False)
+    elif addon.getSetting('life') == 'false':
         pass
 
     # Life HD
     if addon.getSetting('life') == 'true':
-        url4 = '{0}?action=play&url={1}'.format(sysaddon, Life_url)
-        li4 = xbmcgui.ListItem(label='Life HD', iconImage=Life_img)
-        li4.setArt({'poster': Life_img, 'thumb': Life_img, 'fanart': addonfanart})
-        li4.setInfo('video', {'title': 'Life HD', 'plot': language(30008), 'genre': 'Live'})
+        url3 = '{0}?action=play_yt_m3u&url={1}'.format(sysaddon, YT_Kids_playlist)
+        li3 = xbmcgui.ListItem(label='Life HD', iconImage=Life_img)
+        li3.setArt({'poster': Life_img, 'thumb': Life_img, 'fanart': addonfanart})
+        li3.setInfo('video', {'title': 'Life HD', 'plot': language(30008), 'genre': 'Live'})
+        li3.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url3, listitem=li3, isFolder=False)
+    elif addon.getSetting('life') == 'false':
+        pass
+
+    # Eugo24
+    if addon.getSetting('eugo24') == 'true':
+        url4 = '{0}?action=play&url={1}'.format(sysaddon, Eugo24_url)
+        li4 = xbmcgui.ListItem(label='Eugo24', iconImage=Eugo24_img)
+        li4.setArt({'poster': Eugo24_img, 'thumb': Eugo24_img, 'fanart': addonfanart})
+        li4.setInfo('video', {'title': 'Eugo24', 'plot': language(30021), 'genre': 'Live'})
         li4.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url4, listitem=li4, isFolder=False)
-    elif addon.getSetting('life') == 'false':
+    elif addon.getSetting('eugo24') == 'false':
         pass
 
     # Cannali Music
@@ -273,42 +276,42 @@ def main_menu():
 
     # Youtube Channel
     if addon.getSetting('youtube') == 'true':
-        url5 = 'plugin://plugin.video.youtube/channel/{0}/'.format(YT_Channel)
-        li5 = xbmcgui.ListItem(label='Youtube Channel', iconImage=addonicon)
-        li5.setArt({'poster': addonicon, 'thumb': addonicon, 'fanart': addonfanart})
-        addItem(handle=syshandle, url=url5, listitem=li5, isFolder=True)
+        url6 = 'plugin://plugin.video.youtube/channel/{0}/'.format(YT_Channel)
+        li6 = xbmcgui.ListItem(label='Youtube Channel', iconImage=addonicon)
+        li6.setArt({'poster': addonicon, 'thumb': addonicon, 'fanart': addonfanart})
+        addItem(handle=syshandle, url=url6, listitem=li6, isFolder=True)
     elif addon.getSetting('youtube') == 'false':
         pass
 
     # Radio Melodia Toronto
     if addon.getSetting('melodia') == 'true':
-        url6 = '{0}?action=play&url={1}'.format(sysaddon, Melodia_url)
-        li6 = xbmcgui.ListItem(label='Radio Melodia Toronto', iconImage=Melodia_img)
-        li6.setArt({'poster': Melodia_img, 'thumb': Melodia_img, 'fanart': addonfanart})
-        li6.setInfo('music', {'title': 'Radio Melodia Toronto', 'comment': language(30009), 'genre': 'Live'})
-        li6.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url6, listitem=li6, isFolder=False)
+        url7 = '{0}?action=play&url={1}'.format(sysaddon, Melodia_url)
+        li7 = xbmcgui.ListItem(label='Radio Melodia Toronto', iconImage=Melodia_img)
+        li7.setArt({'poster': Melodia_img, 'thumb': Melodia_img, 'fanart': addonfanart})
+        li7.setInfo('music', {'title': 'Radio Melodia Toronto', 'comment': language(30009), 'genre': 'Live'})
+        li7.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url7, listitem=li7, isFolder=False)
     elif addon.getSetting('melodia') == 'false':
         pass
 
     # Canadian Ethnic Web Radio
     if addon.getSetting('cewr') == 'true':
-        url7 = '{0}?action=play&url={1}'.format(sysaddon, CEWR_url)
-        li7 = xbmcgui.ListItem(label='Canadian Ethnic Web Radio', iconImage=CEWR_img)
-        li7.setArt({'poster': CEWR_img, 'thumb': CEWR_img, 'fanart': addonfanart})
-        li7.setInfo('music', {'title': 'Canadian Ethnic Web Radio', 'comment': 'Canadian Ethnic Web Radio', 'genre': 'Live'})
-        li7.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url7, listitem=li7, isFolder=False)
+        url8 = '{0}?action=play&url={1}'.format(sysaddon, CEWR_url)
+        li8 = xbmcgui.ListItem(label='Canadian Ethnic Web Radio', iconImage=CEWR_img)
+        li8.setArt({'poster': CEWR_img, 'thumb': CEWR_img, 'fanart': addonfanart})
+        li8.setInfo('music', {'title': 'Canadian Ethnic Web Radio', 'comment': 'Canadian Ethnic Web Radio', 'genre': 'Live'})
+        li8.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url8, listitem=li8, isFolder=False)
     elif addon.getSetting('cewr') == 'false':
         pass
 
     # Voice Life & Style
     if addon.getSetting('voice') == 'true':
-        url7 = '{0}?action={1}'.format(sysaddon, 'mags_addon')
-        li7 = xbmcgui.ListItem(label='Voice Life & Style Mag', iconImage=magazine_list()[1])
-        li7.setArt({'poster': magazine_list()[1], 'thumb': magazine_list()[1], 'fanart': addonfanart})
-        li7.setInfo('image', {'title': 'Voice Life & Style', 'picturepath': magazine_list()[1]})
-        addItem(handle=syshandle, url=url7, listitem=li7, isFolder=False)
+        url9 = '{0}?action={1}'.format(sysaddon, 'mags_addon')
+        li9 = xbmcgui.ListItem(label='Voice Life & Style Mag', iconImage=magazine_list()[1])
+        li9.setArt({'poster': magazine_list()[1], 'thumb': magazine_list()[1], 'fanart': addonfanart})
+        li9.setInfo('image', {'title': 'Voice Life & Style', 'picturepath': magazine_list()[1]})
+        addItem(handle=syshandle, url=url9, listitem=li9, isFolder=False)
     elif addon.getSetting('voice') == 'false':
         pass
 
@@ -372,6 +375,7 @@ def radio_player():
         player(item=CEWR_url, listitem=listitem)
     else:
         xbmc.executebuiltin('ActivateWindow(videos,"plugin://plugin.video.Toronto-Channels/",return)')
+
 
 def mags_addon():
 
@@ -473,9 +477,9 @@ elif action == 'play':
 
     play_item(url)
 
-elif action == 'play_docs':
+elif action == 'play_yt_m3u':
 
-    play_docs()
+    play_yt_m3u(url)
 
 elif action == 'mags_index':
 

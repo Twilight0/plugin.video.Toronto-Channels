@@ -44,7 +44,7 @@ msgstr "Το Cannali Music εκπέμπει ελληνικά μουσικά βί
 
 msgctxt "#30008"
 msgid "Life HD channel broadcasts cartoons in greek language 24/7"
-msgstr "Το Life HD εκπέμπει παιδικό πρόγραμμα στα ελληνικά 24/7"
+msgstr ""
 
 msgctxt "#30009"
 msgid "Radio Melodia Toronto broadcasts greek music 24/7 (audio only)"
@@ -175,9 +175,13 @@ msgid "Add enhanced mouse keymap for magazines' pages viewing"
 msgstr "Ενεργοποίηση βελτιωμένου χάρτη για ποντίκι κατά την θέαση σελίδων περιοδικών"
 
 msgctxt "#30041"
-msgid "Use alternative playback method for NETV2 Documentaries"
-msgstr "Κάνε χρήση εναλλακτικής μεθόδου αναπαραγωγής για το ΝΕΤV2"
+msgid ""
+msgstr ""
 
 msgctxt "#30042"
 msgid "Show Canadian Ethnic Web Radio"
 msgstr "Δείξε το Καναδικό Έθνικ Διαδικτυακό Ραδιόφωνο"
+
+msgctxt "#30043"
+msgid "Show NETV Toronto 3"
+msgstr "Δείξε το NETV Toronto 3"

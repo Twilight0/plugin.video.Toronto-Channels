@@ -1,3 +1,10 @@
+1.6.3 (06-01-2018)
+- Improved playback behaviour in NETV2 &amp; Life HD, before it always skipped first video
+
+1.6.2 (05-01-2018)
+- Life HD now plays random kids videos from Youtube in the same manner as NETV 2
+- New NETV 2 live channel
+
 1.6.1 (15-12-2017)
 - Url corrected for thumbs on mags index
 

@@ -90,6 +90,7 @@ syshandle = int(sys.argv[1])
 params = dict(urlparse.parse_qsl(sys.argv[2][1:]))
 action = params.get('action', None)
 url = params.get('url')
+name = params.get('name')
 
 
 def play_item(path):
@@ -98,7 +99,7 @@ def play_item(path):
     xbmcplugin.setResolvedUrl(syshandle, True, listitem=li)
 
 
-def play_yt_m3u(link):
+def play_yt_m3u(link, title):
 
     import random
 
@@ -110,7 +111,7 @@ def play_yt_m3u(link):
     play_list = open_url(link)
     videos = play_list.splitlines()[1:][1::2]
     random.shuffle(videos)
-    m3u_playlist = '#EXTM3U\n#EXTINF:0,Youtube\n' + '\n#EXTINF:0,Youtube\n'.join(videos)
+    m3u_playlist = '#EXTM3U\n#EXTINF:0,{0}\n'.format(title) + '\n#EXTINF:0,{0}\n'.format(title).join(videos)
 
     with open(m3u_file, 'w') as f:
         f.write(m3u_playlist)
@@ -223,7 +224,7 @@ def main_menu():
     # NETV Toronto 2
     if addon().getSetting('netv2') == 'true':
         # url1 = '{0}?action=play&url={1}'.format(sysaddon, NETV_Toronto_2_url)
-        url1 = '{0}?action=play_yt_m3u&url={1}'.format(sysaddon, YT_Doc_playlist)
+        url1 = '{0}?action=play_yt_m3u&url={1}&name={2}'.format(sysaddon, YT_Doc_playlist, 'NETV Toronto 2')
         li1 = xbmcgui.ListItem(label='NETV Toronto 2', iconImage=NETVToronto_2_img)
         li1.setArt({'poster': NETVToronto_2_img, 'thumb': NETVToronto_2_img, 'fanart': addonfanart})
         li1.setInfo('video', {'title': 'NETV Toronto 2', 'plot': language(30019), 'genre': 'Live'})
@@ -245,7 +246,7 @@ def main_menu():
 
     # Life HD
     if addon().getSetting('life') == 'true':
-        url3 = '{0}?action=play_yt_m3u&url={1}'.format(sysaddon, YT_Kids_playlist)
+        url3 = '{0}?action=play_yt_m3u&url={1}&name={2}'.format(sysaddon, YT_Kids_playlist, 'Life HD')
         li3 = xbmcgui.ListItem(label='Life HD', iconImage=Life_img)
         li3.setArt({'poster': Life_img, 'thumb': Life_img, 'fanart': addonfanart})
         li3.setInfo('video', {'title': 'Life HD', 'plot': language(30008), 'genre': 'Live'})
@@ -481,7 +482,7 @@ elif action == 'play':
 
 elif action == 'play_yt_m3u':
 
-    play_yt_m3u(url)
+    play_yt_m3u(url, name)
 
 elif action == 'mags_index':
 

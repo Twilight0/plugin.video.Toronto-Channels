@@ -1,3 +1,6 @@
+1.6.4 (08-01-2018)
+- Added naming to randomized playlist (minor feature addition)
+
 1.6.3 (06-01-2018)
 - Improved playback behaviour in NETV2 &amp; Life HD, before it always skipped first video
 

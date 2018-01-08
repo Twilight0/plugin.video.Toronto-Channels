@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.Toronto-Channels" name="Toronto-Channels" version="1.6.3" provider-name="Twilight0">
+<addon id="plugin.video.Toronto-Channels" name="Toronto-Channels" version="1.6.4" provider-name="Twilight0">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.pil" version="1.1.7"/>
     </requires>
     <extension point="xbmc.python.pluginsource" library="addon.py">
         <provides>video audio image</provides>
@@ -14,6 +15,9 @@
         <description lang="el">Το πρόσθετο αυτό παρέχει ζωντανό περιεχόμενο κυρίως εις την Ελληνική γλώσσα</description>
         <license>GNU General Public License, v2</license>
         <news>
+1.6.4 (08-01-2018)
+- Added naming to randomized playlist (minor feature addition)
+
 1.6.3 (06-01-2018)
 - Improved playback behaviour in NETV2 &amp; Life HD, before it always skipped first video
 

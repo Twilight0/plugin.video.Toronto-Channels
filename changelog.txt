@@ -1,3 +1,7 @@
+1.7.0 (10-01-2018)
+- Display logos for LifeHD &amp; NETV2
+- Added youtube and service.banners imports
+
 1.6.4 (08-01-2018)
 - Added naming to randomized playlist (minor feature addition)
 

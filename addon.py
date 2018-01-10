@@ -42,18 +42,23 @@ dialog = xbmcgui.Dialog()
 infoLabel = xbmc.getInfoLabel
 fp = infoLabel('Container.FolderPath')
 player = xbmc.Player().play
-playlist = xbmc.PlayList(1)
+playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
+monitor = xbmc.Monitor()
+copy = xbmcvfs.copy
+delete = xbmcvfs.delete
 
 # Misc variables:
 addonicon = join(addonpath, 'icon.png')
 addonart = join(addonpath, 'resources/media')
 NETVToronto_img = join(addonart, 'NETV_Toronto.png')
 NETVToronto_2_img = join(addonart, 'NETV_Toronto_2.png')
+NETV2_overlay = join(addonart, 'netv2-overlay.png')
 NETVToronto_3_img = join(addonart, 'NETV_Toronto_3.png')
 Cannali_img = join(addonart, 'CANNALI_WEB_MUSIC.png')
 Melodia_img = join(addonart, 'RADIO_MELODIA_TORONTO.png')
 CEWR_img = join(addonart, 'CANADIAN_ETHNIC_WEB_RADIO.jpg')
 Life_img = join(addonart, 'LIFEHD.png')
+Life_overlay = join(addonart, 'life-overlay.png')
 Eugo24_img = join(addonart, 'EUGO24.png')
 Settings_img = join(addonart, 'settings.png')
 # Voice_img = join(addonart, 'mag_thumb.jpg')
@@ -100,6 +105,13 @@ def play_item(path):
 
 
 def play_yt_m3u(link, title):
+
+    if title == 'NETV Toronto 2':
+        copy(NETV2_overlay, transpath(join(addon('service.banners.mod').getAddonInfo('profile').decode('utf-8'), 'mybanners', 'logo.png')))
+    elif title == 'Life HD':
+        copy(Life_overlay, transpath(join(addon('service.banners.mod').getAddonInfo('profile').decode('utf-8'), 'mybanners', 'logo.png')))
+
+    addon('service.banners.mod').setSetting('on', 'true')
 
     import random
 

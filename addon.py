@@ -112,6 +112,10 @@ def play_yt_m3u(link, title):
         copy(Life_overlay, transpath(join(addon('service.banners.mod').getAddonInfo('profile').decode('utf-8'), 'mybanners', 'logo.png')))
 
     addon('service.banners.mod').setSetting('on', 'true')
+    addon('service.banners.mod').setSetting('bannerpos', '0')
+    addon('service.banners.mod').setSetting('yoffset', '0')
+    addon('service.banners.mod').setSetting('cyclepause', '0')
+    addon('service.banners.mod').setSetting('changetime', '5')
 
     import random
 

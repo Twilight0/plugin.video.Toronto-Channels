@@ -1,3 +1,7 @@
+1.7.1 (10-01-2018)
+- Applied settings to banners service in order to display correctly
+- Converted netv2 logo to indexed and minor resize to them both logos
+
 1.7.0 (10-01-2018)
 - Display logos for LifeHD &amp; NETV2
 - Added youtube and service.banners imports

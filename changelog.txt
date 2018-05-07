@@ -1,3 +1,6 @@
+1.7.2 (07-05-2018)
+- Removed Eugo24
+
 1.7.1 (10-01-2018)
 - Applied settings to banners service in order to display correctly
 - Converted netv2 logo to indexed and minor resize to them both logos

@@ -67,17 +67,17 @@ Settings_img = join(addonart, 'settings.png')
 if addon().getSetting('hls') == 'false':
 
     NETVToronto_url = 'rtmp://live.netvtoronto.com/NetvToronto/NetvToronto'
-    NETV_Toronto_2_url = 'rtmp://162.219.176.210/live/eugo242017p1a'
+    # NETV_Toronto_2_url = 'rtmp://162.219.176.210/live/eugo242017p1a'
     NETV_Toronto_3_url = 'rtmp://live.streams.ovh:1935/LIFEHD/LIFEHD'
-    Eugo24_url = 'rtmp://162.219.176.210:18935/live/eugo242017p1a'
+    # Eugo24_url = 'rtmp://162.219.176.210:18935/live/eugo242017p1a'
     Cannali_url = 'rtmp://live.streams.ovh/cannali/cannali'
 
 else:
 
     NETVToronto_url = 'http://live.netvtoronto.com:1935/NetvToronto/NetvToronto/playlist.m3u8'
-    NETV_Toronto_2_url = 'http://162.219.176.210/live/eugo242017p1a/playlist.m3u8'
+    # NETV_Toronto_2_url = 'http://162.219.176.210/live/eugo242017p1a/playlist.m3u8'
     NETV_Toronto_3_url = 'http://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
-    Eugo24_url = 'http://162.219.176.210:18935/live/eugo242017p1a/playlist.m3u8'
+    # Eugo24_url = 'http://162.219.176.210:18935/live/eugo242017p1a/playlist.m3u8'
     Cannali_url = 'http://live.streams.ovh:1935/cannali/cannali/playlist.m3u8'
 
 Melodia_url = 'http://149.202.208.214:9086/live'
@@ -272,15 +272,15 @@ def main_menu():
         pass
 
     # Eugo24
-    if addon().getSetting('eugo24') == 'true':
-        url4 = '{0}?action=play&url={1}'.format(sysaddon, Eugo24_url)
-        li4 = xbmcgui.ListItem(label='Eugo24', iconImage=Eugo24_img)
-        li4.setArt({'poster': Eugo24_img, 'thumb': Eugo24_img, 'fanart': addonfanart})
-        li4.setInfo('video', {'title': 'Eugo24', 'plot': language(30021), 'genre': 'Live'})
-        li4.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url4, listitem=li4, isFolder=False)
-    elif addon().getSetting('eugo24') == 'false':
-        pass
+    # if addon().getSetting('eugo24') == 'true':
+    #     url4 = '{0}?action=play&url={1}'.format(sysaddon, Eugo24_url)
+    #     li4 = xbmcgui.ListItem(label='Eugo24', iconImage=Eugo24_img)
+    #     li4.setArt({'poster': Eugo24_img, 'thumb': Eugo24_img, 'fanart': addonfanart})
+    #     li4.setInfo('video', {'title': 'Eugo24', 'plot': language(30021), 'genre': 'Live'})
+    #     li4.setProperty('IsPlayable', 'true')
+    #     addItem(handle=syshandle, url=url4, listitem=li4, isFolder=False)
+    # elif addon().getSetting('eugo24') == 'false':
+    #     pass
 
     # Cannali Music
     if addon().getSetting('cannali') == 'true':

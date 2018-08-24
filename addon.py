@@ -18,7 +18,7 @@
         along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-import os, sys, urlparse, re
+import os, sys, urlparse, re, urllib
 import xbmcaddon, xbmcgui, xbmcplugin, xbmc, xbmcvfs
 from resources.lib.url_opener import open_url
 
@@ -59,7 +59,17 @@ Melodia_img = join(addonart, 'RADIO_MELODIA_TORONTO.png')
 CEWR_img = join(addonart, 'CANADIAN_ETHNIC_WEB_RADIO.jpg')
 Life_img = join(addonart, 'LIFEHD.png')
 Life_overlay = join(addonart, 'life-overlay.png')
+Energy_img = join(addonart, 'ENERGY.png')
+Energy_overlay = join(addonart, 'energy-overlay.png')
 Eugo24_img = join(addonart, 'EUGO24.png')
+EPT1_img = join(addonart, 'EPT1.png')
+EPT2_img = join(addonart, 'EPT2.png')
+EPT3_img = join(addonart, 'EPT3.png')
+EPTW_img = join(addonart, 'EPT WORLD.png')
+RIK_img = join(addonart, 'RIK.png')
+SKAI_img = join(addonart, 'SKAI.png')
+SIGMA_img = join(addonart, 'SIGMA.png')
+E_img = join(addonart, 'E TV.png')
 Settings_img = join(addonart, 'settings.png')
 # Voice_img = join(addonart, 'mag_thumb.jpg')
 
@@ -80,7 +90,18 @@ else:
     # Eugo24_url = 'http://162.219.176.210:18935/live/eugo242017p1a/playlist.m3u8'
     Cannali_url = 'http://live.streams.ovh:1935/cannali/cannali/playlist.m3u8'
 
+########################################################################################################################
+
 Melodia_url = 'http://149.202.208.214:9086/live'
+Energy_url = 'http://live.streams.ovh:1935/NGradio/NGradio_360p/playlist.m3u8'
+EPT1_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert1'   # &image={}'.format(EPT1_img)
+EPT2_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert2'   # &image={}'.format(EPT2_img)
+EPT3_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert3'   # &image={}'.format(EPT3_img)
+EPTW_url = 'plugin://plugin.video.ert.gr/?action=live&url=ertw'   # &image={}'.format(EPTW_img)
+E_url = 'https://epsilonlivehls.akamaized.net/hls/live/683532/stream1a/res0/playlist_res0.m3u8'
+SKAI_url = 'http://5.135.92.130:36523/out/u/573_1.m3u8'
+RIK_url = 'http://l3.cloudskep.com/cybcsat/abr/playlist.m3u8'
+SIGMA_url = 'http://81.21.47.74/hls/live.m3u8'
 CEWR_url = 'http://147.135.252.4:10221/live'
 YT_Channel = 'UCKXFDK9dRGcnwr7mWmzoY2w'
 YT_Doc_playlist = 'http://alivegr.net/raw/docs.m3u'
@@ -96,12 +117,26 @@ params = dict(urlparse.parse_qsl(sys.argv[2][1:]))
 action = params.get('action', None)
 url = params.get('url')
 name = params.get('name')
+image = params.get('image')
 
 
 def play_item(path):
 
     li = xbmcgui.ListItem(path=path)
     xbmcplugin.setResolvedUrl(syshandle, True, listitem=li)
+
+
+def play_with_logo(path):
+
+    copy(Energy_overlay, transpath(join(addon('service.banners.mod').getAddonInfo('profile').decode('utf-8'), 'mybanners', 'logo.png')))
+
+    addon('service.banners.mod').setSetting('on', 'true')
+    addon('service.banners.mod').setSetting('bannerpos', '0')
+    addon('service.banners.mod').setSetting('yoffset', '0')
+    addon('service.banners.mod').setSetting('cyclepause', '0')
+    addon('service.banners.mod').setSetting('changetime', '5')
+
+    play_item(path)
 
 
 def play_yt_m3u(link, title):
@@ -134,6 +169,15 @@ def play_yt_m3u(link, title):
 
     playlist.load(m3u_file)
     xbmc.executebuiltin('Action(Play)')
+
+
+def play_media(link, image):
+
+    link = urllib.unquote_plus(link)
+    li = xbmcgui.ListItem(path=link, iconImage=image, thumbnailImage=image)
+    li.setArt({'thumb': image})
+
+    xbmc.Player().play(link, li)
 
 
 def magazine_list():
@@ -228,111 +272,180 @@ def main_menu():
 
     # NETV Toronto
     if addon().getSetting('netv') == 'true':
+
         url0 = '{0}?action=play&url={1}'.format(sysaddon, NETVToronto_url)
         li0 = xbmcgui.ListItem(label='NETV Toronto', iconImage=NETVToronto_img)
         li0.setArt({'poster': NETVToronto_img, 'thumb': NETVToronto_img, 'fanart': addonfanart})
         li0.setInfo('video', {'title': 'NETV Toronto', 'plot': language(30006), 'genre': 'Live'})
         li0.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url0, listitem=li0, isFolder=False)
-    elif addon().getSetting('netv') == 'false':
-        pass
 
     # NETV Toronto 2
     if addon().getSetting('netv2') == 'true':
-        # url1 = '{0}?action=play&url={1}'.format(sysaddon, NETV_Toronto_2_url)
+
         url1 = '{0}?action=play_yt_m3u&url={1}&name={2}'.format(sysaddon, YT_Doc_playlist, 'NETV Toronto 2')
         li1 = xbmcgui.ListItem(label='NETV Toronto 2', iconImage=NETVToronto_2_img)
         li1.setArt({'poster': NETVToronto_2_img, 'thumb': NETVToronto_2_img, 'fanart': addonfanart})
         li1.setInfo('video', {'title': 'NETV Toronto 2', 'plot': language(30019), 'genre': 'Live'})
         li1.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url1, listitem=li1, isFolder=False)
-    elif addon().getSetting('netv2') == 'false':
-        pass
 
     # NETV Toronto 3
     if addon().getSetting('netv3') == 'true':
+
         url2 = '{0}?action=play&url={1}'.format(sysaddon, NETV_Toronto_3_url)
         li2 = xbmcgui.ListItem(label='NETV Toronto 3', iconImage=NETVToronto_3_img)
         li2.setArt({'poster': NETVToronto_3_img, 'thumb': NETVToronto_3_img, 'fanart': addonfanart})
         li2.setInfo('video', {'title': 'NETV Toronto 3', 'plot': '', 'genre': 'Live'})
         li2.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url2, listitem=li2, isFolder=False)
-    elif addon().getSetting('life') == 'false':
-        pass
 
     # Life HD
     if addon().getSetting('life') == 'true':
+
         url3 = '{0}?action=play_yt_m3u&url={1}&name={2}'.format(sysaddon, YT_Kids_playlist, 'Life HD')
         li3 = xbmcgui.ListItem(label='Life HD', iconImage=Life_img)
         li3.setArt({'poster': Life_img, 'thumb': Life_img, 'fanart': addonfanart})
         li3.setInfo('video', {'title': 'Life HD', 'plot': language(30008), 'genre': 'Live'})
         li3.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url3, listitem=li3, isFolder=False)
-    elif addon().getSetting('life') == 'false':
-        pass
-
-    # Eugo24
-    # if addon().getSetting('eugo24') == 'true':
-    #     url4 = '{0}?action=play&url={1}'.format(sysaddon, Eugo24_url)
-    #     li4 = xbmcgui.ListItem(label='Eugo24', iconImage=Eugo24_img)
-    #     li4.setArt({'poster': Eugo24_img, 'thumb': Eugo24_img, 'fanart': addonfanart})
-    #     li4.setInfo('video', {'title': 'Eugo24', 'plot': language(30021), 'genre': 'Live'})
-    #     li4.setProperty('IsPlayable', 'true')
-    #     addItem(handle=syshandle, url=url4, listitem=li4, isFolder=False)
-    # elif addon().getSetting('eugo24') == 'false':
-    #     pass
 
     # Cannali Music
     if addon().getSetting('cannali') == 'true':
+
         url5 = '{0}?action=play&url={1}'.format(sysaddon, Cannali_url)
         li5 = xbmcgui.ListItem(label='CANNALI Music', iconImage=Cannali_img)
         li5.setArt({'poster': Cannali_img, 'thumb': Cannali_img, 'fanart': addonfanart})
         li5.setInfo('video', {'title': 'CANNALI Music', 'plot': language(30007), 'genre': 'Live'})
         li5.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url5, listitem=li5, isFolder=False)
-    elif addon().getSetting('cannali') == 'false':
-        pass
+
+    # Energy
+    if addon().getSetting('energy') == 'true':
+
+        url5 = '{0}?action=play_with_logo&url={1}'.format(sysaddon, Energy_url)
+        li5 = xbmcgui.ListItem(label='Energy', iconImage=Energy_img)
+        li5.setArt({'poster': Energy_img, 'thumb': Energy_img, 'fanart': addonfanart})
+        li5.setInfo('video', {'title': 'Energy', 'plot': language(30041), 'genre': 'Live'})
+        li5.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url5, listitem=li5, isFolder=False)
 
     # Youtube Channel
     if addon().getSetting('youtube') == 'true':
+
         url6 = 'plugin://plugin.video.youtube/channel/{0}/'.format(YT_Channel)
         li6 = xbmcgui.ListItem(label='Youtube Channel', iconImage=addonicon)
         li6.setArt({'poster': addonicon, 'thumb': addonicon, 'fanart': addonfanart})
         addItem(handle=syshandle, url=url6, listitem=li6, isFolder=True)
-    elif addon().getSetting('youtube') == 'false':
-        pass
 
     # Radio Melodia Toronto
     if addon().getSetting('melodia') == 'true':
+
         url7 = '{0}?action=play&url={1}'.format(sysaddon, Melodia_url)
         li7 = xbmcgui.ListItem(label='Radio Melodia Toronto', iconImage=Melodia_img)
         li7.setArt({'poster': Melodia_img, 'thumb': Melodia_img, 'fanart': addonfanart})
         li7.setInfo('music', {'title': 'Radio Melodia Toronto', 'comment': language(30009), 'genre': 'Live'})
         li7.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url7, listitem=li7, isFolder=False)
-    elif addon().getSetting('melodia') == 'false':
-        pass
 
     # Canadian Ethnic Web Radio
     if addon().getSetting('cewr') == 'true':
+
         url8 = '{0}?action=play&url={1}'.format(sysaddon, CEWR_url)
         li8 = xbmcgui.ListItem(label='Canadian Ethnic Web Radio', iconImage=CEWR_img)
         li8.setArt({'poster': CEWR_img, 'thumb': CEWR_img, 'fanart': addonfanart})
         li8.setInfo('music', {'title': 'Canadian Ethnic Web Radio', 'comment': 'Canadian Ethnic Web Radio', 'genre': 'Live'})
         li8.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url8, listitem=li8, isFolder=False)
-    elif addon().getSetting('cewr') == 'false':
-        pass
 
     # Voice Life & Style
     if addon().getSetting('voice') == 'true':
+
         url9 = '{0}?action={1}'.format(sysaddon, 'mags_addon')
         li9 = xbmcgui.ListItem(label='Voice Life & Style Mag', iconImage=magazine_list()[1])
         li9.setArt({'poster': magazine_list()[1], 'thumb': magazine_list()[1], 'fanart': addonfanart})
         li9.setInfo('image', {'title': 'Voice Life & Style', 'picturepath': magazine_list()[1]})
         addItem(handle=syshandle, url=url9, listitem=li9, isFolder=False)
-    elif addon().getSetting('voice') == 'false':
-        pass
+
+    # ERT 1
+    if addon().getSetting('ert1') == 'true':
+
+        url10 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(EPT1_url), urllib.quote_plus(EPT1_img))
+        li10 = xbmcgui.ListItem(label='ERT 1', iconImage=EPT1_img)
+        li10.setArt({'poster': EPT1_img, 'thumb': EPT1_img, 'fanart': addonfanart})
+        li10.setInfo('video', {'title': 'ERT 1', 'genre': 'Live'})
+        # li10.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url10, listitem=li10, isFolder=False)
+
+    # ERT 2
+    if addon().getSetting('ert2') == 'true':
+
+        url11 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(EPT2_url), urllib.quote_plus(EPT2_img))
+        li11 = xbmcgui.ListItem(label='ERT 2', iconImage=EPT2_img)
+        li11.setArt({'poster': EPT2_img, 'thumb': EPT2_img, 'fanart': addonfanart})
+        li11.setInfo('video', {'title': 'ERT 2', 'genre': 'Live'})
+        # li11.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url11, listitem=li11, isFolder=False)
+
+    # ERT 3
+    if addon().getSetting('ert3') == 'true':
+
+        url12 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(EPT3_url), urllib.quote_plus(EPT3_img))
+        li12 = xbmcgui.ListItem(label='ERT 3', iconImage=EPT3_img)
+        li12.setArt({'poster': EPT3_img, 'thumb': EPT3_img, 'fanart': addonfanart})
+        li12.setInfo('video', {'title': 'ERT 3', 'genre': 'Live'})
+        # li12.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url12, listitem=li12, isFolder=False)
+
+    # ERT WORLD
+    if addon().getSetting('ertw') == 'true':
+
+        url13 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(EPTW_url), urllib.quote_plus(EPTW_img))
+        li13 = xbmcgui.ListItem(label='ERT WORLD', iconImage=EPTW_img)
+        li13.setArt({'poster': EPTW_img, 'thumb': EPTW_img, 'fanart': addonfanart})
+        li13.setInfo('video', {'title': 'ERT WORLD', 'genre': 'Live'})
+        # li13.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url13, listitem=li13, isFolder=False)
+
+    # EPSILON
+    if addon().getSetting('epsilon') == 'true':
+
+        url14 = '{0}?action=play&url={1}'.format(sysaddon, E_url)
+        li14 = xbmcgui.ListItem(label='EPSILON', iconImage=E_img)
+        li14.setArt({'poster': E_img, 'thumb': E_img, 'fanart': addonfanart})
+        li14.setInfo('video', {'title': 'EPSILON', 'genre': 'Live'})
+        li14.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url14, listitem=li14, isFolder=False)
+
+    # SKAI
+    if addon().getSetting('skai') == 'true':
+
+        url15 = '{0}?action=play&url={1}'.format(sysaddon, SKAI_url)
+        li15 = xbmcgui.ListItem(label='SKAI', iconImage=SKAI_img)
+        li15.setArt({'poster': SKAI_img, 'thumb': SKAI_img, 'fanart': addonfanart})
+        li15.setInfo('video', {'title': 'SKAI', 'genre': 'Live'})
+        li15.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url15, listitem=li15, isFolder=False)
+
+    # RIK
+    if addon().getSetting('rik') == 'true':
+
+        url16 = '{0}?action=play&url={1}'.format(sysaddon, RIK_url)
+        li16 = xbmcgui.ListItem(label='RIK', iconImage=RIK_img)
+        li16.setArt({'poster': RIK_img, 'thumb': RIK_img, 'fanart': addonfanart})
+        li16.setInfo('video', {'title': 'RIK', 'genre': 'Live'})
+        li16.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url16, listitem=li16, isFolder=False)
+
+    # SIGMA
+    if addon().getSetting('sigma') == 'true':
+
+        url17 = '{0}?action=play&url={1}'.format(sysaddon, SIGMA_url)
+        li17 = xbmcgui.ListItem(label='SIGMA', iconImage=SIGMA_img)
+        li17.setArt({'poster': SIGMA_img, 'thumb': SIGMA_img, 'fanart': addonfanart})
+        li17.setInfo('video', {'title': 'SIGMA', 'genre': 'Live'})
+        li17.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url17, listitem=li17, isFolder=False)
 
     # Settings
     settings_url = '{0}?action=settings'.format(sysaddon)
@@ -496,9 +609,17 @@ elif action == 'play':
 
     play_item(url)
 
+elif action == 'play_with_logo':
+
+    play_with_logo(url)
+
 elif action == 'play_yt_m3u':
 
     play_yt_m3u(url, name)
+
+elif action == 'play_media':
+
+    play_media(url, image)
 
 elif action == 'mags_index':
 

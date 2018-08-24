@@ -175,7 +175,7 @@ msgid "Add enhanced mouse keymap for magazines' pages viewing"
 msgstr ""
 
 msgctxt "#30041"
-msgid ""
+msgid "Foreign music 24/7"
 msgstr ""
 
 msgctxt "#30042"
@@ -183,5 +183,45 @@ msgid "Show Canadian Ethnic Web Radio"
 msgstr ""
 
 msgctxt "#30043"
+msgid "Show Energy"
+msgstr ""
+
+msgctxt "#30044"
+msgid "Show SIGMA"
+msgstr ""
+
+msgctxt "#30045"
+msgid "Show ERT 1"
+msgstr ""
+
+msgctxt "#30046"
+msgid "Show ERT 2"
+msgstr ""
+
+msgctxt "#30047"
+msgid "Show ERT 3"
+msgstr ""
+
+msgctxt "#30048"
+msgid "Show ERT World"
+msgstr ""
+
+msgctxt "#30049"
+msgid "Show EPSILON"
+msgstr ""
+
+msgctxt "#30050"
+msgid "Show SKAI"
+msgstr ""
+
+msgctxt "#30051"
+msgid "Show RIK"
+msgstr ""
+
+msgctxt "#30052"
+msgid ""
+msgstr ""
+
+msgctxt "#30053"
 msgid "Show NETV Toronto 3"
 msgstr ""

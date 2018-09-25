@@ -205,8 +205,8 @@ msgid "Show ERT 3"
 msgstr "Δείξε το ΕΡΤ 3"
 
 msgctxt "#30048"
-msgid "Show ERT World"
-msgstr "Δείξε την ΕΡΤ World"
+msgid ""
+msgstr ""
 
 msgctxt "#30049"
 msgid "Show EPSILON"

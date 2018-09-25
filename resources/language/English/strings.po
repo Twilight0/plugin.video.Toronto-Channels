@@ -203,7 +203,7 @@ msgid "Show ERT 3"
 msgstr ""
 
 msgctxt "#30048"
-msgid "Show ERT World"
+msgid ""
 msgstr ""
 
 msgctxt "#30049"

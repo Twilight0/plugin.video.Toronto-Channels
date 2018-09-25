@@ -78,7 +78,7 @@ if addon().getSetting('hls') == 'false':
 
     NETVToronto_url = 'rtmp://live.netvtoronto.com/NetvToronto/NetvToronto'
     # NETV_Toronto_2_url = 'rtmp://162.219.176.210/live/eugo242017p1a'
-    NETV_Toronto_3_url = 'rtmp://live.streams.ovh:1935/LIFEHD/LIFEHD'
+    NETV_Toronto_3_url = Energy_url = 'rtmp://live.streams.ovh:1935/LIFEHD/LIFEHD'
     # Eugo24_url = 'rtmp://162.219.176.210:18935/live/eugo242017p1a'
     Cannali_url = 'rtmp://live.streams.ovh/cannali/cannali'
 
@@ -86,20 +86,19 @@ else:
 
     NETVToronto_url = 'http://live.netvtoronto.com:1935/NetvToronto/NetvToronto/playlist.m3u8'
     # NETV_Toronto_2_url = 'http://162.219.176.210/live/eugo242017p1a/playlist.m3u8'
-    NETV_Toronto_3_url = 'http://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
+    NETV_Toronto_3_url = Energy_url = 'http://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
     # Eugo24_url = 'http://162.219.176.210:18935/live/eugo242017p1a/playlist.m3u8'
     Cannali_url = 'http://live.streams.ovh:1935/cannali/cannali/playlist.m3u8'
 
 ########################################################################################################################
 
 Melodia_url = 'http://149.202.208.214:9086/live'
-Energy_url = 'http://live.streams.ovh:1935/NGradio/NGradio_360p/playlist.m3u8'
-EPT1_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert1'   # &image={}'.format(EPT1_img)
-EPT2_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert2'   # &image={}'.format(EPT2_img)
-EPT3_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert3'   # &image={}'.format(EPT3_img)
-EPTW_url = 'plugin://plugin.video.ert.gr/?action=live&url=ertw'   # &image={}'.format(EPTW_img)
+EPT1_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert1'
+EPT2_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert2'
+EPT3_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert3'
+EPTW_url = 'plugin://plugin.video.ert.gr/?action=live&url=ertw'
 E_url = 'https://epsilonlivehls.akamaized.net/hls/live/683532/stream1a/res0/playlist_res0.m3u8'
-SKAI_url = 'http://5.135.92.130:36523/out/u/573_1.m3u8'
+SKAI_url = 'plugin://plugin.video.skai.gr/?action=live'
 RIK_url = 'http://l3.cloudskep.com/cybcsat/abr/playlist.m3u8'
 SIGMA_url = 'http://81.21.47.74/hls/live.m3u8'
 CEWR_url = 'http://147.135.252.4:10221/live'
@@ -178,6 +177,8 @@ def play_media(link, image):
     li.setArt({'thumb': image})
 
     xbmc.Player().play(link, li)
+    # Reserving backup method, requires li.setProperty('IsPlayable', 'true'):
+    # xbmcplugin.setResolvedUrl(syshandle, True, li)
 
 
 def magazine_list():
@@ -397,16 +398,6 @@ def main_menu():
         # li12.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url12, listitem=li12, isFolder=False)
 
-    # ERT WORLD
-    if addon().getSetting('ertw') == 'true':
-
-        url13 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(EPTW_url), urllib.quote_plus(EPTW_img))
-        li13 = xbmcgui.ListItem(label='ERT WORLD', iconImage=EPTW_img)
-        li13.setArt({'poster': EPTW_img, 'thumb': EPTW_img, 'fanart': addonfanart})
-        li13.setInfo('video', {'title': 'ERT WORLD', 'genre': 'Live'})
-        # li13.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url13, listitem=li13, isFolder=False)
-
     # EPSILON
     if addon().getSetting('epsilon') == 'true':
 
@@ -419,12 +410,11 @@ def main_menu():
 
     # SKAI
     if addon().getSetting('skai') == 'true':
-
-        url15 = '{0}?action=play&url={1}'.format(sysaddon, SKAI_url)
+        url15 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(SKAI_url), urllib.quote_plus(SKAI_img))
         li15 = xbmcgui.ListItem(label='SKAI', iconImage=SKAI_img)
         li15.setArt({'poster': SKAI_img, 'thumb': SKAI_img, 'fanart': addonfanart})
         li15.setInfo('video', {'title': 'SKAI', 'genre': 'Live'})
-        li15.setProperty('IsPlayable', 'true')
+        # li15.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url15, listitem=li15, isFolder=False)
 
     # RIK

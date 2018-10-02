@@ -125,19 +125,6 @@ def play_item(path):
     xbmcplugin.setResolvedUrl(syshandle, True, listitem=li)
 
 
-def play_with_logo(path):
-
-    copy(Energy_overlay, transpath(join(addon('service.banners.mod').getAddonInfo('profile').decode('utf-8'), 'mybanners', 'logo.png')))
-
-    addon('service.banners.mod').setSetting('on', 'true')
-    addon('service.banners.mod').setSetting('bannerpos', '0')
-    addon('service.banners.mod').setSetting('yoffset', '0')
-    addon('service.banners.mod').setSetting('cyclepause', '0')
-    addon('service.banners.mod').setSetting('changetime', '5')
-
-    play_item(path)
-
-
 def play_yt_m3u(link, title):
 
     if title == 'NETV Toronto 2':
@@ -324,7 +311,7 @@ def main_menu():
     # Energy
     if addon().getSetting('energy') == 'true':
 
-        url5 = '{0}?action=play_with_logo&url={1}'.format(sysaddon, Energy_url)
+        url5 = '{0}?action=play&url={1}'.format(sysaddon, Energy_url)
         li5 = xbmcgui.ListItem(label='Energy', iconImage=Energy_img)
         li5.setArt({'poster': Energy_img, 'thumb': Energy_img, 'fanart': addonfanart})
         li5.setInfo('video', {'title': 'Energy', 'plot': language(30041), 'genre': 'Live'})
@@ -598,10 +585,6 @@ if action is None:
 elif action == 'play':
 
     play_item(url)
-
-elif action == 'play_with_logo':
-
-    play_with_logo(url)
 
 elif action == 'play_yt_m3u':
 

@@ -202,7 +202,7 @@ msgstr "Δείξε την ΕΡΤ 2"
 
 msgctxt "#30047"
 msgid "Show ERT 3"
-msgstr "Δείξε το ΕΡΤ 3"
+msgstr "Δείξε την ΕΡΤ 3"
 
 msgctxt "#30048"
 msgid ""

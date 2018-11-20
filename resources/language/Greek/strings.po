@@ -193,20 +193,20 @@ msgid "Show SIGMA"
 msgstr "Δείξε το SIGMA"
 
 msgctxt "#30045"
-msgid "Show ERT 1"
-msgstr "Δείξε την ΕΡΤ 1"
+msgid "Show CAPITAL"
+msgstr "Δείξε το CAPITAL"
 
 msgctxt "#30046"
-msgid "Show ERT 2"
-msgstr "Δείξε την ΕΡΤ 2"
+msgid "Show PLUS"
+msgstr "Δείξε το PLUS"
 
 msgctxt "#30047"
-msgid "Show ERT 3"
-msgstr "Δείξε την ΕΡΤ 3"
-
-msgctxt "#30048"
 msgid ""
 msgstr ""
+
+msgctxt "#30048"
+msgid "Show OMEGA CY"
+msgstr "Δείξε το OMEGA Κύπρου"
 
 msgctxt "#30049"
 msgid "Show EPSILON"
@@ -221,8 +221,8 @@ msgid "Show RIK"
 msgstr "Δείξε το ΡΙΚ"
 
 msgctxt "#30052"
-msgid ""
-msgstr ""
+msgid "Show ALPHA CY"
+msgstr "Δείξε τον Alpha Κύπρου"
 
 msgctxt "#30053"
 msgid "Show NETV Toronto 3"

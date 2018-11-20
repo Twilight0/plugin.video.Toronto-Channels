@@ -191,19 +191,19 @@ msgid "Show SIGMA"
 msgstr ""
 
 msgctxt "#30045"
-msgid "Show ERT 1"
+msgid "Show CAPITAL"
 msgstr ""
 
 msgctxt "#30046"
-msgid "Show ERT 2"
+msgid "Show PLUS"
 msgstr ""
 
 msgctxt "#30047"
-msgid "Show ERT 3"
+msgid ""
 msgstr ""
 
 msgctxt "#30048"
-msgid ""
+msgid "Show OMEGA CY"
 msgstr ""
 
 msgctxt "#30049"
@@ -219,7 +219,7 @@ msgid "Show RIK"
 msgstr ""
 
 msgctxt "#30052"
-msgid ""
+msgid "Show ALPHA CY"
 msgstr ""
 
 msgctxt "#30053"

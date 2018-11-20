@@ -62,14 +62,12 @@ Life_overlay = join(addonart, 'life-overlay.png')
 Energy_img = join(addonart, 'ENERGY.png')
 Energy_overlay = join(addonart, 'energy-overlay.png')
 Eugo24_img = join(addonart, 'EUGO24.png')
-EPT1_img = join(addonart, 'EPT1.png')
-EPT2_img = join(addonart, 'EPT2.png')
-EPT3_img = join(addonart, 'EPT3.png')
-EPTW_img = join(addonart, 'EPT WORLD.png')
 RIK_img = join(addonart, 'RIK.png')
-SKAI_img = join(addonart, 'SKAI.png')
 SIGMA_img = join(addonart, 'SIGMA.png')
-E_img = join(addonart, 'E TV.png')
+OMEGA_CY_img = join(addonart, 'OMEGA.png')
+ALPHA_CY_img = join(addonart, 'ALPHA.png')
+PLUS_img = join(addonart, 'PLUS.png')
+CAPITAL_img = join(addonart, 'CAPITAL.png')
 Settings_img = join(addonart, 'settings.png')
 # Voice_img = join(addonart, 'mag_thumb.jpg')
 
@@ -93,15 +91,14 @@ else:
 ########################################################################################################################
 
 Melodia_url = 'http://149.202.208.214:9086/live'
-EPT1_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert1'
-EPT2_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert2'
-EPT3_url = 'plugin://plugin.video.ert.gr/?action=live&url=ert3'
-EPTW_url = 'plugin://plugin.video.ert.gr/?action=live&url=ertw'
-E_url = 'https://epsilonlivehls.akamaized.net/hls/live/683532/stream1a/res0/playlist_res0.m3u8'
+ALPHA_CY_url = 'plugin://plugin.video.alphatv.gr/?action=live&url=cy'
 SKAI_url = 'plugin://plugin.video.skai.gr/?action=live'
 RIK_url = 'http://l3.cloudskep.com/cybcsat/abr/playlist.m3u8'
 SIGMA_url = 'http://81.21.47.74/hls/live.m3u8'
 CEWR_url = 'http://147.135.252.4:10221/live'
+OMEGA_CY_url = 'http://freeview.ashttp9.visionip.tv/live/tvnetwork-hellenictv-mega-hsslive-25f-4x3-SDh/chunklist.m3u8'
+PLUS_url = 'http://freeview.ashttp9.visionip.tv/live/tvnetwork-hellenictv-plus_tv-hsslive-25f-4x3-SDh/chunklist.m3u8'
+CAPITAL_url = 'http://freeview.ashttp9.visionip.tv/live/tvnetwork-hellenictv-htvcapital-hsslive-25f-4x3-SDh/chunklist.m3u8'
 YT_Channel = 'UCKXFDK9dRGcnwr7mWmzoY2w'
 YT_Doc_playlist = 'http://alivegr.net/raw/docs.m3u'
 YT_Kids_playlist = 'http://alivegr.net/raw/kids.m3u'
@@ -355,55 +352,6 @@ def main_menu():
         li9.setInfo('image', {'title': 'Voice Life & Style', 'picturepath': magazine_list()[1]})
         addItem(handle=syshandle, url=url9, listitem=li9, isFolder=False)
 
-    # ERT 1
-    if addon().getSetting('ert1') == 'true':
-
-        url10 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(EPT1_url), urllib.quote_plus(EPT1_img))
-        li10 = xbmcgui.ListItem(label='ERT 1', iconImage=EPT1_img)
-        li10.setArt({'poster': EPT1_img, 'thumb': EPT1_img, 'fanart': addonfanart})
-        li10.setInfo('video', {'title': 'ERT 1', 'genre': 'Live'})
-        # li10.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url10, listitem=li10, isFolder=False)
-
-    # ERT 2
-    if addon().getSetting('ert2') == 'true':
-
-        url11 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(EPT2_url), urllib.quote_plus(EPT2_img))
-        li11 = xbmcgui.ListItem(label='ERT 2', iconImage=EPT2_img)
-        li11.setArt({'poster': EPT2_img, 'thumb': EPT2_img, 'fanart': addonfanart})
-        li11.setInfo('video', {'title': 'ERT 2', 'genre': 'Live'})
-        # li11.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url11, listitem=li11, isFolder=False)
-
-    # ERT 3
-    if addon().getSetting('ert3') == 'true':
-
-        url12 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(EPT3_url), urllib.quote_plus(EPT3_img))
-        li12 = xbmcgui.ListItem(label='ERT 3', iconImage=EPT3_img)
-        li12.setArt({'poster': EPT3_img, 'thumb': EPT3_img, 'fanart': addonfanart})
-        li12.setInfo('video', {'title': 'ERT 3', 'genre': 'Live'})
-        # li12.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url12, listitem=li12, isFolder=False)
-
-    # EPSILON
-    if addon().getSetting('epsilon') == 'true':
-
-        url14 = '{0}?action=play&url={1}'.format(sysaddon, E_url)
-        li14 = xbmcgui.ListItem(label='EPSILON', iconImage=E_img)
-        li14.setArt({'poster': E_img, 'thumb': E_img, 'fanart': addonfanart})
-        li14.setInfo('video', {'title': 'EPSILON', 'genre': 'Live'})
-        li14.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url14, listitem=li14, isFolder=False)
-
-    # SKAI
-    if addon().getSetting('skai') == 'true':
-        url15 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(SKAI_url), urllib.quote_plus(SKAI_img))
-        li15 = xbmcgui.ListItem(label='SKAI', iconImage=SKAI_img)
-        li15.setArt({'poster': SKAI_img, 'thumb': SKAI_img, 'fanart': addonfanart})
-        li15.setInfo('video', {'title': 'SKAI', 'genre': 'Live'})
-        # li15.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url15, listitem=li15, isFolder=False)
-
     # RIK
     if addon().getSetting('rik') == 'true':
 
@@ -423,6 +371,41 @@ def main_menu():
         li17.setInfo('video', {'title': 'SIGMA', 'genre': 'Live'})
         li17.setProperty('IsPlayable', 'true')
         addItem(handle=syshandle, url=url17, listitem=li17, isFolder=False)
+
+    # OMEGA CY
+    if addon().getSetting('omega') == 'true':
+        url18 = '{0}?action=play&url={1}'.format(sysaddon, OMEGA_CY_url)
+        li18 = xbmcgui.ListItem(label='OMEGA CY', iconImage=OMEGA_CY_img)
+        li18.setArt({'poster': OMEGA_CY_img, 'thumb': OMEGA_CY_img, 'fanart': addonfanart})
+        li18.setInfo('video', {'title': 'OMEGA CY', 'genre': 'Live'})
+        li18.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url18, listitem=li18, isFolder=False)
+
+    # ALPHA CY
+    if addon().getSetting('alpha') == 'true':
+        url19 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(ALPHA_CY_url), urllib.quote_plus(ALPHA_CY_img))
+        li19 = xbmcgui.ListItem(label='ALPHA CY', iconImage=ALPHA_CY_img)
+        li19.setArt({'poster': ALPHA_CY_img, 'thumb': ALPHA_CY_img, 'fanart': addonfanart})
+        li19.setInfo('video', {'title': 'ALPHA CY', 'genre': 'Live'})
+        addItem(handle=syshandle, url=url19, listitem=li19, isFolder=False)
+
+    # CAPITAL
+    if addon().getSetting('capital') == 'true':
+        url20 = '{0}?action=play&url={1}'.format(sysaddon, CAPITAL_url)
+        li20 = xbmcgui.ListItem(label='CAPITAL', iconImage=CAPITAL_img)
+        li20.setArt({'poster': CAPITAL_img, 'thumb': CAPITAL_img, 'fanart': addonfanart})
+        li20.setInfo('video', {'title': 'CAPITAL', 'genre': 'Live'})
+        li20.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url20, listitem=li20, isFolder=False)
+
+    # PLUS
+    if addon().getSetting('plus') == 'true':
+        url20 = '{0}?action=play&url={1}'.format(sysaddon, PLUS_url)
+        li20 = xbmcgui.ListItem(label='PLUS', iconImage=PLUS_img)
+        li20.setArt({'poster': PLUS_img, 'thumb': PLUS_img, 'fanart': addonfanart})
+        li20.setInfo('video', {'title': 'PLUS', 'genre': 'Live'})
+        li20.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url20, listitem=li20, isFolder=False)
 
     # Settings
     settings_url = '{0}?action=settings'.format(sysaddon)

@@ -92,7 +92,6 @@ else:
 
 Melodia_url = 'http://149.202.208.214:9086/live'
 ALPHA_CY_url = 'plugin://plugin.video.alphatv.gr/?action=live&url=cy'
-SKAI_url = 'plugin://plugin.video.skai.gr/?action=live'
 RIK_url = 'http://l3.cloudskep.com/cybcsat/abr/playlist.m3u8'
 SIGMA_url = 'http://81.21.47.74/hls/live.m3u8'
 CEWR_url = 'http://147.135.252.4:10221/live'

@@ -1,3 +1,6 @@
+1.8.4 (07-02-2019)
+- Re-added voice mag setting
+
 1.8.3 (20-11-2018)
 - Removed greek streams
 - Added Cypriot streams

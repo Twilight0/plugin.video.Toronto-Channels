@@ -11,6 +11,7 @@
         <setting id="life" type="bool" label="30004" default="true"/>
         <setting id="melodia" type="bool" label="30005" default="true"/>
         <setting id="cewr" type="bool" label="30042" default="true"/>
+        <setting id="voice" type="bool" label="30023" default="true"/>
         <setting id="rik" type="bool" label="30051" default="true"/>
         <setting id="sigma" type="bool" label="30044" default="true"/>
         <setting id="alpha" type="bool" label="30052" default="true"/>

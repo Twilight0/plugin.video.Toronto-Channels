@@ -18,9 +18,11 @@
         along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-import os, sys, urlparse, re, urllib
+import os, sys, re
 import xbmcaddon, xbmcgui, xbmcplugin, xbmc, xbmcvfs
-from resources.lib.url_opener import open_url
+from urllib import quote_plus, unquote_plus
+from urlparse import parse_qsl, urljoin
+from resources.lib.url_opener import read_url, open_web_browser
 
 # Addon variables:
 join = os.path.join
@@ -102,13 +104,13 @@ YT_Channel = 'UCKXFDK9dRGcnwr7mWmzoY2w'
 YT_Doc_playlist = 'http://alivegr.net/raw/docs.m3u'
 YT_Kids_playlist = 'http://alivegr.net/raw/kids.m3u'
 mags_base_url = 'http://alivegr.net/bci_mags/'
-index_url = urlparse.urljoin(mags_base_url, 'index.txt')
+index_url = urljoin(mags_base_url, 'index.txt')
 
 
 # Handlers:
 sysaddon = sys.argv[0]
 syshandle = int(sys.argv[1])
-params = dict(urlparse.parse_qsl(sys.argv[2][1:]))
+params = dict(parse_qsl(sys.argv[2][1:]))
 action = params.get('action', None)
 url = params.get('url')
 name = params.get('name')
@@ -141,7 +143,7 @@ def play_yt_m3u(link, title):
 
     m3u_file = join(datapath, link.rpartition('/')[2])
 
-    play_list = open_url(link)
+    play_list = read_url(link)
     videos = play_list.splitlines()[1:][1::2]
     random.shuffle(videos)
     m3u_playlist = '#EXTM3U\n#EXTINF:0,{0}\n'.format(title) + '\n#EXTINF:0,{0}\n'.format(title).join(videos)
@@ -155,7 +157,7 @@ def play_yt_m3u(link, title):
 
 def play_media(link, image):
 
-    link = urllib.unquote_plus(link)
+    link = unquote_plus(link)
     li = xbmcgui.ListItem(path=link, iconImage=image, thumbnailImage=image)
     li.setArt({'thumb': image})
 
@@ -168,7 +170,7 @@ def magazine_list():
 
     xbmcplugin.setContent(syshandle, 'images')
 
-    index_txt = open_url(index_url)
+    index_txt = read_url(index_url)
 
     splitted = index_txt.splitlines()
 
@@ -179,7 +181,7 @@ def magazine_list():
     elif len(number) == 2:
         number = '0' + number
 
-    voice_img = urlparse.urljoin(mags_base_url, 'mag_thumb_{0}.jpg'.format(number))
+    voice_img = urljoin(mags_base_url, 'mag_thumb_{0}.jpg'.format(number))
 
     magazines = []
 
@@ -188,7 +190,7 @@ def magazine_list():
         title = line.replace('Volume', language(30025))
 
         image = line.partition(' - ')[0].replace('Volume ', 'vol')
-        image = urlparse.urljoin(mags_base_url, image + '/thumbs' + '/thumb-01.jpg')
+        image = urljoin(mags_base_url, image + '/thumbs' + '/thumb-01.jpg')
 
         url = '{0}?action=mag_index&url={1}'.format(sysaddon, image.partition('/thumbs')[0])
 
@@ -218,7 +220,7 @@ def mags_index():
 
 def mag_index(url):
 
-    number = int(open_url(url + '/pages'))
+    number = int(read_url(url + '/pages'))
 
     pages = []
 
@@ -317,7 +319,17 @@ def main_menu():
     # Youtube Channel
     if addon().getSetting('youtube') == 'true':
 
-        url6 = 'plugin://plugin.video.youtube/channel/{0}/'.format(YT_Channel)
+        from youtube_registration import register_api_keys
+
+        yt_keys = {
+            'id': '498788153161-pe356urhr0uu2m98od6f72k0vvcdsij0.apps.googleusercontent.com',
+            'api_key': 'AIzaSyA8k1OyLGf03HBNl0byD511jr9cFWo2GR4',
+            'secret': 'e6RBIFCVh1Fm-IX87PVJjgUu'
+        }
+
+        register_api_keys('plugin.video.Toronto-Channels', yt_keys['api_key'], yt_keys['id'], yt_keys['secret'])
+
+        url6 = 'plugin://plugin.video.youtube/channel/{0}/'.format(YT_Channel) + '?addon_id=plugin.video.Toronto-Channels'
         li6 = xbmcgui.ListItem(label='Youtube Channel', iconImage=addonicon)
         li6.setArt({'poster': addonicon, 'thumb': addonicon, 'fanart': addonfanart})
         addItem(handle=syshandle, url=url6, listitem=li6, isFolder=True)
@@ -351,6 +363,13 @@ def main_menu():
         li9.setInfo('image', {'title': 'Voice Life & Style', 'picturepath': magazine_list()[1]})
         addItem(handle=syshandle, url=url9, listitem=li9, isFolder=False)
 
+    # External link
+    if addon().getSetting('external') == 'true':
+        url22 = '{0}?action={1}&url={2}'.format(sysaddon, 'open_url', quote_plus('http://www.bcimedia.net/'))
+        li22 = xbmcgui.ListItem(label='BCI Media Website', iconImage=addonicon)
+        li22.setArt({'poster': addonicon, 'thumb': addonicon, 'fanart': addonfanart})
+        addItem(handle=syshandle, url=url22, listitem=li22, isFolder=False)
+
     # RIK
     if addon().getSetting('rik') == 'true':
 
@@ -382,7 +401,7 @@ def main_menu():
 
     # ALPHA CY
     if addon().getSetting('alpha') == 'true':
-        url19 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, urllib.quote_plus(ALPHA_CY_url), urllib.quote_plus(ALPHA_CY_img))
+        url19 = '{0}?action=play_media&url={1}&image={2}'.format(sysaddon, quote_plus(ALPHA_CY_url), quote_plus(ALPHA_CY_img))
         li19 = xbmcgui.ListItem(label='ALPHA CY', iconImage=ALPHA_CY_img)
         li19.setArt({'poster': ALPHA_CY_img, 'thumb': ALPHA_CY_img, 'fanart': addonfanart})
         li19.setInfo('video', {'title': 'ALPHA CY', 'genre': 'Live'})
@@ -399,12 +418,12 @@ def main_menu():
 
     # PLUS
     if addon().getSetting('plus') == 'true':
-        url20 = '{0}?action=play&url={1}'.format(sysaddon, PLUS_url)
-        li20 = xbmcgui.ListItem(label='PLUS', iconImage=PLUS_img)
-        li20.setArt({'poster': PLUS_img, 'thumb': PLUS_img, 'fanart': addonfanart})
-        li20.setInfo('video', {'title': 'PLUS', 'genre': 'Live'})
-        li20.setProperty('IsPlayable', 'true')
-        addItem(handle=syshandle, url=url20, listitem=li20, isFolder=False)
+        url21 = '{0}?action=play&url={1}'.format(sysaddon, PLUS_url)
+        li21 = xbmcgui.ListItem(label='PLUS', iconImage=PLUS_img)
+        li21.setArt({'poster': PLUS_img, 'thumb': PLUS_img, 'fanart': addonfanart})
+        li21.setInfo('video', {'title': 'PLUS', 'genre': 'Live'})
+        li21.setProperty('IsPlayable', 'true')
+        addItem(handle=syshandle, url=url21, listitem=li21, isFolder=False)
 
     # Settings
     settings_url = '{0}?action=settings'.format(sysaddon)
@@ -599,3 +618,7 @@ elif action == 'setup_iptv':
 elif action == 'keymap_edit':
 
     keymap_edit()
+
+elif action == 'open_url':
+
+    open_web_browser(url)

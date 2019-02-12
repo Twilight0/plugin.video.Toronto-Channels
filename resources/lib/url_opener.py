@@ -18,10 +18,11 @@
         along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+import xbmc
 import urllib2
 
 
-def open_url(url):
+def read_url(url):
 
     requester = urllib2.Request(url)
     requester.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
@@ -30,3 +31,21 @@ def open_url(url):
     response.close()
 
     return result
+
+
+def android_activity(url):
+
+    return xbmc.executebuiltin('StartAndroidActivity("","android.intent.action.VIEW","","{0}")'.format(url))
+
+
+def open_web_browser(url):
+
+    if xbmc.getCondVisibility('system.platform.android'):
+
+        return android_activity(url)
+
+    else:
+
+        import webbrowser
+
+        return webbrowser.open(url)

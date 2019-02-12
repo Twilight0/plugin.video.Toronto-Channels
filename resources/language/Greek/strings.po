@@ -201,8 +201,8 @@ msgid "Show PLUS"
 msgstr "Δείξε το PLUS"
 
 msgctxt "#30047"
-msgid ""
-msgstr ""
+msgid "Show external link"
+msgstr "Δείξε τον εξωτερικό σύνδεσμο"
 
 msgctxt "#30048"
 msgid "Show OMEGA CY"

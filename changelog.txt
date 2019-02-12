@@ -1,3 +1,8 @@
+1.9.0 (12-02-2019)
+- Add youtube keys when opening youtube channel
+- Add external link opening capability
+- Various other tweaks
+
 1.8.4 (07-02-2019)
 - Re-added voice mag setting
 

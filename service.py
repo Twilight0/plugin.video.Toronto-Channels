@@ -17,3 +17,13 @@
         You should have received a copy of the GNU General Public License
         along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
+
+from resources.lib.tools import check_key
+from tulip import control
+
+
+while not control.aborted():
+
+    if control.wait(60 * 120):
+
+        check_key()

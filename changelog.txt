@@ -1,3 +1,8 @@
+2.0.0 (20-03-2019)
+- Addon code rework
+- Added licence key authorization system for subscribers
+- Bumped lowest supported Kodi version to Jarvis
+
 1.9.0 (12-02-2019)
 - Add youtube keys when opening youtube channel
 - Add external link opening capability

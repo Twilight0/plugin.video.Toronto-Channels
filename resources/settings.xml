@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
+    <category label="30054">
+        <setting id="licence_key" label="30055" type="text"/>
+        <setting id="status" label="30057" type="bool" enable="false"/>
+        <setting label="30056" type="action" action="RunPlugin(plugin://$ID/?action=account_info)"/>
+    </category>
     <category label="30010">
-        <setting id="hls" type="bool" label="30020" default="true"/>
+        <!--<setting id="hls" type="bool" label="30020" default="true"/>-->
         <setting id="netv" type="bool" label="30002" default="true"/>
         <setting id="netv2" type="bool" label="30018" default="true"/>
         <setting id="netv3" type="bool" label="30053" default="true"/>
@@ -21,8 +26,8 @@
         <setting id="capital" type="bool" label="30045" default="true"/>
     </category>
     <category label="30029">
-        <setting type="lsep" label="30011"/>
-        <setting label="30012" type="action" action="RunPlugin(plugin://$ID/?action=setup_iptv)"/>
+        <!--<setting type="lsep" label="30011"/>-->
+        <!--<setting label="30012" type="action" action="RunPlugin(plugin://$ID/?action=setup_iptv)"/>-->
         <setting type="lsep" label="30027"/>
         <setting label="30040" type="action" action="RunPlugin(plugin://$ID/?action=keymap_edit)"/>
     </category>

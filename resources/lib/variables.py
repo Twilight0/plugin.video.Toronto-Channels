@@ -37,7 +37,7 @@ YT_Kids_playlist = 'http://alivegr.net/raw/kids.m3u'
 mags_base_url = 'http://alivegr.net/bci_mags/index.txt'
 subscribe_url = 'https://bcimedia.net/order/cart.php?gid=1'
 # status_url = 'https://bcimedia.net/order/handler.php?&action=login&status=active&licensekey={0}'
-status_url = 'https://bcimedia.net/order/handler.php?&action=login&status=reissue&licensekey={0}'
+status_url = 'https://bcimedia.net/order/handler.php?&action=login&status=reissued&licensekey={0}'
 account_status = 'https://bcimedia.net/order/clientarea.php?action=productdetails&id=1'
 
 NETV_Toronto_url = ('https://www.netvtoronto.com/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOl1q0ndrutMfWv1ryEtrWl1q0ndrutMfWv1ryEtrWl3bSyxLSAxn0lM0ZDtG=')

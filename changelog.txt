@@ -1,3 +1,6 @@
+2.0.1 (20-03-2019)
+- Corrected status url
+
 2.0.0 (20-03-2019)
 - Addon code rework
 - Added licence key authorization system for subscribers

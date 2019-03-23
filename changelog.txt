@@ -1,3 +1,7 @@
+2.0.2 (23-03-2019)
+- Cache licence key validity for two hours
+  > in order to avoid constant requests to the server
+
 2.0.1 (20-03-2019)
 - Corrected status url
 

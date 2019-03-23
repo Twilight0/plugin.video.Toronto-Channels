@@ -23,8 +23,7 @@ from __future__ import absolute_import
 import sys, re
 from tulip.compat import unquote_plus, urljoin
 from random import shuffle
-from tulip import control, client
-from tulip import directory
+from tulip import control, client, cache, directory
 from resources.lib import variables
 from base64 import b64decode as decoder
 from youtube_registration import register_api_keys
@@ -262,16 +261,18 @@ def substitute(regex):
 
 def check_key(key=control.addon(variables.sysaddon).getSetting('licence_key')):
 
-    url = variables.status_url.format(key)
+    status = client.request(
+        variables.status_url.format('active', key)
+    ) == 'Active' or client.request(
+        variables.status_url.format('reissued', key)
+    ) == 'Active'
 
-    status = client.request(url)
-
-    if status == 'Active':
+    if status:
 
         control.addon(variables.sysaddon).setSetting('status', 'true')
         return True
 
-    elif status == 'Suspend':
+    else:
 
         control.addon(variables.sysaddon).setSetting('status', 'false')
         return False
@@ -303,7 +304,7 @@ def checkpoint():
 
                 control.setSetting('licence_key', key)
 
-                status = check_key(key)
+                status = cache.get(check_key, 2, key)
 
                 if not status:
 
@@ -346,7 +347,7 @@ def checkpoint():
 
                 control.setSetting('licence_key', key)
 
-                status = check_key(key)
+                status = cache.get(check_key, 2, key)
 
                 if not status:
 
@@ -366,4 +367,4 @@ def checkpoint():
 
     else:
 
-        return check_key()
+        return cache.get(check_key, 2)

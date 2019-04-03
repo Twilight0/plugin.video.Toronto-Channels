@@ -1,3 +1,7 @@
+2.1.0 (03-04-2019)
+- Bug fixes
+- Renamed addon
+
 2.0.2 (23-03-2019)
 - Cache licence key validity for two hours
   > in order to avoid constant requests to the server

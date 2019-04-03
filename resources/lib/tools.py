@@ -267,15 +267,15 @@ def check_key(key=control.addon(variables.sysaddon).getSetting('licence_key')):
         variables.status_url.format('reissued', key)
     ) == 'Active'
 
-    if status:
-
-        control.addon(variables.sysaddon).setSetting('status', 'true')
-        return True
-
-    else:
+    if status is False:
 
         control.addon(variables.sysaddon).setSetting('status', 'false')
         return False
+
+    else:
+
+        control.addon(variables.sysaddon).setSetting('status', 'true')
+        return True
 
 
 def checkpoint():

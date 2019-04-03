@@ -41,10 +41,10 @@ def play_item(url):
         url = substitute(variables.Cannali_url[1])
         headers = {'Referer': variables.Cannali_url[0], 'Origin': variables.Cannali_url[0]}
 
-    elif url == 'energy':
+    elif url == 'lifehd':
 
-        url = substitute(variables.Energy_url[1])
-        headers = {'Referer': variables.Energy_url[0], 'Origin': variables.Energy_url[0]}
+        url = substitute(variables.Life_url[1])
+        headers = {'Referer': variables.Life_url[0], 'Origin': variables.Life_url[0]}
 
     else:
 

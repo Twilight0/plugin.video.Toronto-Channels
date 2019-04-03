@@ -41,7 +41,7 @@ account_status = 'https://bcimedia.net/order/clientarea.php?action=productdetail
 
 NETV_Toronto_url = ('https://www.netvtoronto.com/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOl1q0ndrutMfWv1ryEtrWl1q0ndrutMfWv1ryEtrWl3bSyxLSAxn0lM0ZDtG=')
 Cannali_url = ('https://www.cannalimusic.com/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOl3nLuuD4sdzTngeVC2vrr3HinM00ys9JAhvUA2XPC3rFDZeZntCWmJmWmY5Tm3u4')
-Energy_url = ('https://www.lifehd.magicstreams.net/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOlZHnBw1uwMPAsfaVoe1TBvrAALPiuc9JAhvUA2XPC3rFDZe5mJeXmJmWmdiUBtn1oa==')
+Life_url = ('https://www.lifehd.magicstreams.net/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOlZHnBw1uwMPAsfaVoe1TBvrAALPiuc9JAhvUA2XPC3rFDZe5mJeXmJmWmdiUBtn1oa==')
 
 
 yt_keys = {

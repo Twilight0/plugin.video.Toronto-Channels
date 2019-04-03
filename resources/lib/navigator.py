@@ -20,7 +20,7 @@
 
 from tulip import control, directory, client
 from resources.lib import variables
-from resources.lib.tools import magazine_list, substitute
+from resources.lib.tools import magazine_list
 
 
 class Indexer:
@@ -60,8 +60,8 @@ class Indexer:
             # }
             {
                 'title': 'Life HD',
-                'action': 'play_yt_m3u', 'isFolder': 'False',
-                'url': variables.YT_Kids_playlist,
+                'action': 'play', 'isFolder': 'False',
+                'url': 'lifehd',
                 'icon': 'LIFEHD.png',
                 'boolean': control.setting('life') == 'true',
                 'plot': control.lang(30008), 'genre': 'Pseudo-Live'
@@ -75,15 +75,15 @@ class Indexer:
                 'boolean': control.setting('cannali') == 'true',
                 'plot': control.lang(30007), 'genre': 'Live'
             }
-            ,
-            {
-                'title': 'Energy',
-                'action': 'play', 'isFolder': 'False',
-                'url': 'energy',
-                'icon': 'ENERGY.png',
-                'boolean': control.setting('energy') == 'true',
-                'plot': control.lang(30041), 'genre': 'Live'
-            }
+            # ,
+            # {
+            #     'title': 'Energy',
+            #     'action': 'play', 'isFolder': 'False',
+            #     'url': 'energy',
+            #     'icon': 'ENERGY.png',
+            #     'boolean': control.setting('energy') == 'true',
+            #     'plot': control.lang(30041), 'genre': 'Live'
+            # }
             ,
             {
                 'title': 'Youtube Channel',
@@ -116,8 +116,7 @@ class Indexer:
                 'title': 'Voice Life & Style Mag',
                 'action': 'mags_addon', 'isFolder': 'False', 'isPlayable': 'False',
                 'image': magazine_list()[1],
-                'boolean': control.setting('voice') == 'true',
-                'genre': 'Live'
+                'boolean': control.setting('voice') == 'true'
             }
             ,
             {

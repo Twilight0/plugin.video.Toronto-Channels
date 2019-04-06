@@ -322,7 +322,7 @@ def checkpoint():
 
             control.okDialog(heading=control.name(), line1=control.lang(30062))
 
-    elif control.setting('licence_key') and control.setting('status') == 'false':
+    elif control.setting('licence_key') and not cache.get(check_key, 2):
 
         choices = [control.lang(30067), control.lang(30065), control.lang(30066)]
 
@@ -367,4 +367,4 @@ def checkpoint():
 
     else:
 
-        return cache.get(check_key, 2)
+        return True

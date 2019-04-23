@@ -227,57 +227,57 @@ msgid "Show NETV Toronto 3"
 msgstr ""
 
 msgctxt "#30054"
-msgid "Licence"
+msgid ""
 msgstr ""
 
 msgctxt "#30055"
-msgid "Key"
+msgid ""
 msgstr ""
 
 msgctxt "#30056"
-msgid "Account info"
+msgid ""
 msgstr ""
 
 msgctxt "#30057"
-msgid "Status"
+msgid ""
 msgstr ""
 
 msgctxt "#30058"
-msgid "Licence key not detected"
+msgid ""
 msgstr ""
 
 msgctxt "#30059"
-msgid "Licence key has expired. Do you want to renew your subscription?"
+msgid ""
 msgstr ""
 
 msgctxt "#30060"
-msgid "Please type your licence key"
+msgid ""
 msgstr ""
 
 msgctxt "#30061"
-msgid "Failure/Cancelled"
+msgid ""
 msgstr ""
 
 msgctxt "#30062"
-msgid "Toronto Channels will not work without a licence key"
+msgid ""
 msgstr ""
 
 msgctxt "#30063"
-msgid "Licence key expired"
+msgid ""
 msgstr ""
 
 msgctxt "#30064"
-msgid "Obtain new key"
+msgid ""
 msgstr ""
 
 msgctxt "#30065"
-msgid "I've already have a key, let me enter it"
+msgid ""
 msgstr ""
 
 msgctxt "#30066"
-msgid "Open registration website only"
+msgid ""
 msgstr ""
 
 msgctxt "#30067"
-msgid "Renew key"
+msgid ""
 msgstr ""

@@ -1,3 +1,6 @@
+2.2.0 (19-04-2019)
+- Removed key input system and reverted to older streams urls playback
+
 2.1.2 (06-04-2019)
 - Fixed reissued key input system and check
 

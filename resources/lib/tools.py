@@ -33,24 +33,17 @@ def play_item(url):
 
     if url == 'netv':
 
-        url = substitute(variables.NETV_Toronto_url[1])
-        headers = {'Referer': variables.NETV_Toronto_url[0], 'Origin': variables.NETV_Toronto_url[0]}
+        url = variables.NETV_Toronto_url
 
     elif url == 'cannali':
 
-        url = substitute(variables.Cannali_url[1])
-        headers = {'Referer': variables.Cannali_url[0], 'Origin': variables.Cannali_url[0]}
+        url = variables.Cannali_url
 
     elif url == 'lifehd':
 
-        url = substitute(variables.Life_url[1])
-        headers = {'Referer': variables.Life_url[0], 'Origin': variables.Life_url[0]}
+        url = variables.Life_url
 
-    else:
-
-        headers = None
-
-    directory.resolve(url, headers=headers)
+    directory.resolve(url)
 
 
 def play_yt_m3u(url, title):
@@ -257,114 +250,3 @@ def substitute(regex):
     substitution = decoder(regex.swapcase())
 
     return substitution
-
-
-def check_key(key=control.addon(variables.sysaddon).getSetting('licence_key')):
-
-    status = client.request(
-        variables.status_url.format('active', key)
-    ) == 'Active' or client.request(
-        variables.status_url.format('reissued', key)
-    ) == 'Active'
-
-    if status is False:
-
-        control.addon(variables.sysaddon).setSetting('status', 'false')
-        return False
-
-    else:
-
-        control.addon(variables.sysaddon).setSetting('status', 'true')
-        return True
-
-
-def checkpoint():
-
-    if not control.setting('licence_key'):
-
-        choices = [control.lang(30064), control.lang(30065), control.lang(30066)]
-
-        choice = control.selectDialog(choices, control.lang(30058))
-
-        if choice == 0 or choice == 1:
-
-            if choice == 0:
-
-                control.open_web_browser(variables.subscribe_url)
-
-            key = control.inputDialog(heading=control.lang(30060))
-
-            if not key:
-
-                control.infoDialog(control.lang(30061))
-
-                return
-
-            else:
-
-                control.setSetting('licence_key', key)
-
-                status = cache.get(check_key, 2, key)
-
-                if not status:
-
-                    return
-
-                else:
-
-                    return status
-
-        elif choice == 2:
-
-            control.open_web_browser(variables.subscribe_url)
-
-        else:
-
-            control.okDialog(heading=control.name(), line1=control.lang(30062))
-
-    elif control.setting('licence_key') and not cache.get(check_key, 2):
-
-        choices = [control.lang(30067), control.lang(30065), control.lang(30066)]
-
-        # choice = control.selectDialog(choices, control.lang(30063))
-        choice = control.dialog.select(heading=control.lang(30063), list=choices)
-
-        if choice == 0 or choice == 1:
-
-            if choice == 0:
-
-                control.open_web_browser(variables.subscribe_url)
-
-            key = control.inputDialog(heading=control.lang(30060))
-
-            if not key:
-
-                control.infoDialog(control.lang(30061))
-
-                return False
-
-            else:
-
-                control.setSetting('licence_key', key)
-
-                status = cache.get(check_key, 2, key)
-
-                if not status:
-
-                    return
-
-                else:
-
-                    return status
-
-        elif choice == 2:
-
-            control.open_web_browser(variables.subscribe_url)
-
-        else:
-
-            control.okDialog(heading=control.name(), line1=control.lang(30062))
-
-    else:
-
-        return True

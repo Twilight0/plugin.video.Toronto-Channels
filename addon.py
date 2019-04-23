@@ -44,26 +44,23 @@ name = params.get('name')
 query = params.get('query')
 
 
-proceed = tools.checkpoint()
-
-
-if content == 'video' and proceed:
+if content == 'video':
 
     navigator.Indexer(argv=argv).main_menu()
 
-elif content == 'audio' and proceed:
+elif content == 'audio':
 
     tools.radio_player()
 
-elif content == 'image' and proceed:
+elif content == 'image':
 
     navigator.Indexer(argv=argv).mags_index()
 
-elif action is None and proceed:
+elif action is None:
 
     navigator.Indexer(argv=argv).main_menu()
 
-elif action == 'play' and proceed:
+elif action == 'play':
 
     tools.play_item(url)
 
@@ -75,11 +72,11 @@ elif action == 'play_media':
 
     tools.play_media(url, image)
 
-elif action == 'mags_index' and proceed:
+elif action == 'mags_index':
 
     navigator.Indexer(argv=argv).mags_index()
 
-elif action == 'mags_addon' and proceed:
+elif action == 'mags_addon':
 
     tools.mags_addon()
 
@@ -87,7 +84,7 @@ elif action == 'youtube_channel':
 
     tools.youtube_channel(url)
 
-elif action == 'mag_index' and proceed:
+elif action == 'mag_index':
 
     navigator.Indexer(argv=argv).mag_index(url)
 

@@ -61,7 +61,7 @@ if setting('hls') == 'true':
 
 else:
 
-    NETVToronto_url = 'rtmp://live.netvtoronto.com/NetvToronto/NetvToronto'
+    NETV_Toronto_url = 'rtmp://live.netvtoronto.com/NetvToronto/NetvToronto'
     # NETV_Toronto_2_url = 'rtmp://162.219.176.210/live/eugo242017p1a'
     Life_url = 'rtmp://live.streams.ovh:1935/LIFEHD/LIFEHD'
     # Eugo24_url = 'rtmp://162.219.176.210:18935/live/eugo242017p1a'

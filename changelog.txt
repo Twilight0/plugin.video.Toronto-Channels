@@ -1,4 +1,8 @@
-2.2.0 (19-04-2019)
+2.2.1 (24-04-2019)
+- Updated variables import statement
+- Replaced single string stream urls with those from variables module
+
+2.2.0 (23-04-2019)
 - Removed key input system and reverted to older streams urls playback
 
 2.1.2 (06-04-2019)

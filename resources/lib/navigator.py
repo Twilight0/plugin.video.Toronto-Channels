@@ -36,7 +36,7 @@ class Indexer:
             {
                 'title': 'NETV Toronto',
                 'action': 'play', 'isFolder': 'False',
-                'url': 'netv',
+                'url': variables.NETV_Toronto_url,
                 'icon': 'NETV_Toronto.png',
                 'boolean': control.setting('netv') == 'true',
                 'plot': control.lang(30006), 'genre': 'Live'
@@ -61,7 +61,7 @@ class Indexer:
             {
                 'title': 'Life HD',
                 'action': 'play', 'isFolder': 'False',
-                'url': 'lifehd',
+                'url': variables.Life_url,
                 'icon': 'LIFEHD.png',
                 'boolean': control.setting('life') == 'true',
                 'plot': control.lang(30008), 'genre': 'Pseudo-Live'
@@ -70,7 +70,7 @@ class Indexer:
             {
                 'title': 'CANNALI Music',
                 'action': 'play', 'isFolder': 'False',
-                'url': 'cannali',
+                'url': variables.Cannali_url,
                 'icon': 'CANNALI_WEB_MUSIC.png',
                 'boolean': control.setting('cannali') == 'true',
                 'plot': control.lang(30007), 'genre': 'Live'

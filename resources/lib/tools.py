@@ -23,25 +23,13 @@ from __future__ import absolute_import
 import sys, re
 from tulip.compat import unquote_plus, urljoin
 from random import shuffle
-from tulip import control, client, cache, directory
-from resources.lib import variables
+from tulip import control, client, directory
+from . import variables
 from base64 import b64decode as decoder
 from youtube_registration import register_api_keys
 
 
 def play_item(url):
-
-    if url == 'netv':
-
-        url = variables.NETV_Toronto_url
-
-    elif url == 'cannali':
-
-        url = variables.Cannali_url
-
-    elif url == 'lifehd':
-
-        url = variables.Life_url
 
     directory.resolve(url)
 

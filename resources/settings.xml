@@ -6,7 +6,7 @@
         <setting id="netv2" type="bool" label="30018" default="true"/>
         <setting id="netv3" type="bool" label="30053" default="true"/>
         <setting id="cannali" type="bool" label="30003" default="true"/>
-        <setting id="energy" type="bool" label="30043" default="true"/>
+<!--        <setting id="energy" type="bool" label="30043" default="true"/>-->
         <setting id="youtube" type="bool" label="30024" default="true"/>
         <setting id="life" type="bool" label="30004" default="true"/>
         <setting id="melodia" type="bool" label="30005" default="true"/>
@@ -15,10 +15,11 @@
         <setting id="external" type="bool" label="30047" default="true"/>
         <setting id="rik" type="bool" label="30051" default="true"/>
         <setting id="sigma" type="bool" label="30044" default="true"/>
-        <setting id="alpha" type="bool" label="30052" default="true"/>
-        <setting id="omega" type="bool" label="30048" default="true"/>
-        <setting id="plus" type="bool" label="30046" default="true"/>
-        <setting id="capital" type="bool" label="30045" default="true"/>
+        <setting id="webcam" type="bool" label="30044" default="true"/>
+<!--        <setting id="alpha" type="bool" label="30052" default="true"/>-->
+<!--        <setting id="omega" type="bool" label="30048" default="true"/>-->
+<!--        <setting id="plus" type="bool" label="30046" default="true"/>-->
+<!--        <setting id="capital" type="bool" label="30045" default="true"/>-->
     </category>
     <category label="30029">
         <!--<setting type="lsep" label="30011"/>-->

@@ -36,24 +36,6 @@ def play_item(url):
 
 def play_yt_m3u(url, title):
 
-    NETV2_overlay = control.transPath(control.join(control.addonPath, 'media', 'netv2-overlay.png'))
-    Life_overlay = control.transPath(control.join(control.addonPath, 'media', 'life-overlay.png'))
-
-    if title == 'NETV Toronto 2':
-        control.copy(
-            NETV2_overlay, control.transPath(control.join(control.addon('service.banners.mod').getAddonInfo('profile'), 'mybanners', 'logo.png'))
-        )
-    elif title == 'Life HD':
-        control.copy(
-            Life_overlay, control.transPath(control.join(control.addon('service.banners.mod').getAddonInfo('profile'), 'mybanners', 'logo.png'))
-        )
-
-    control.addon('service.banners.mod').setSetting('on', 'true')
-    control.addon('service.banners.mod').setSetting('bannerpos', '0')
-    control.addon('service.banners.mod').setSetting('yoffset', '0')
-    control.addon('service.banners.mod').setSetting('cyclepause', '0')
-    control.addon('service.banners.mod').setSetting('changetime', '5')
-
     m3u_file = control.join(control.dataPath, url.rpartition('/')[2])
 
     play_list = client.request(url)

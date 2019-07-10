@@ -227,7 +227,7 @@ msgid "Show NETV Toronto 3"
 msgstr ""
 
 msgctxt "#30054"
-msgid ""
+msgid "Show Webcam stream"
 msgstr ""
 
 msgctxt "#30055"

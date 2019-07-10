@@ -143,41 +143,49 @@ class Indexer:
                 'boolean': control.setting('sigma') == 'true',
                 'genre': 'Live'
             }
+            # ,
+            # {
+            #     'title': 'OMEGA CY',
+            #     'url': variables.OMEGA_CY_url,
+            #     'action': 'play', 'isFolder': 'False',
+            #     'icon': 'OMEGA.png',
+            #     'boolean': control.setting('omega') == 'true',
+            #     'genre': 'Live'
+            # }
+            # ,
+            # {
+            #     'title': 'ALPHA CY',
+            #     'url': variables.ALPHA_CY_url,
+            #     'action': 'play_media', 'isFolder': 'False',
+            #     'image': control.addonmedia('ALPHA.png'),
+            #     'boolean': control.setting('alpha') == 'true',
+            #     'genre': 'Live'
+            # }
+            # ,
+            # {
+            #     'title': 'CAPITAL',
+            #     'url': variables.CAPITAL_url,
+            #     'action': 'play', 'isFolder': 'False',
+            #     'icon': 'CAPITAL.png',
+            #     'boolean': control.setting('capital') == 'true',
+            #     'genre': 'Live'
+            # }
+            # ,
+            # {
+            #     'title': 'PLUS',
+            #     'url': variables.PLUS_url,
+            #     'action': 'play', 'isFolder': 'False',
+            #     'icon': 'PLUS.png',
+            #     'boolean': control.setting('plus') == 'true',
+            #     'genre': 'Live'
+            # }
             ,
             {
-                'title': 'OMEGA CY',
-                'url': variables.OMEGA_CY_url,
-                'action': 'play', 'isFolder': 'False',
-                'icon': 'OMEGA.png',
-                'boolean': control.setting('omega') == 'true',
-                'genre': 'Live'
-            }
-            ,
-            {
-                'title': 'ALPHA CY',
-                'url': variables.ALPHA_CY_url,
-                'action': 'play_media', 'isFolder': 'False',
-                'image': control.addonmedia('ALPHA.png'),
-                'boolean': control.setting('alpha') == 'true',
-                'genre': 'Live'
-            }
-            ,
-            {
-                'title': 'CAPITAL',
-                'url': variables.CAPITAL_url,
-                'action': 'play', 'isFolder': 'False',
-                'icon': 'CAPITAL.png',
-                'boolean': control.setting('capital') == 'true',
-                'genre': 'Live'
-            }
-            ,
-            {
-                'title': 'PLUS',
-                'url': variables.PLUS_url,
-                'action': 'play', 'isFolder': 'False',
-                'icon': 'PLUS.png',
-                'boolean': control.setting('plus') == 'true',
-                'genre': 'Live'
+            'title': 'Webcam',
+            'url': variables.WEBCAM_url,
+            'action': 'play', 'isFolder': 'False',
+            'boolean': control.setting('webcam') == 'true',
+            'genre': 'Live'
             }
         ]
 

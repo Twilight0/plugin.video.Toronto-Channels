@@ -42,15 +42,15 @@ class Indexer:
                 'plot': control.lang(30006), 'genre': 'Live'
             }
             ,
-            {
-                'title': 'NETV Toronto 2',
-                'action': 'play_yt_m3u', 'isFolder': 'False',
-                'url': variables.YT_Doc_playlist,
-                'icon': 'NETV_Toronto_2.png',
-                'boolean': control.setting('netv2') == 'true',
-                'plot': control.lang(30019), 'genre': 'Pseudo-Live'
-            }
-            ,
+            # {
+            #     'title': 'NETV Toronto 2',
+            #     'action': 'play_yt_m3u', 'isFolder': 'False',
+            #     'url': variables.YT_Doc_playlist,
+            #     'icon': 'NETV_Toronto_2.png',
+            #     'boolean': control.setting('netv2') == 'true',
+            #     'plot': control.lang(30019), 'genre': 'Pseudo-Live'
+            # }
+            # ,
             # {
             #     'title': 'NETV Toronto 3',
             #     'action': 'play', 'isFolder': 'False',
@@ -58,15 +58,15 @@ class Indexer:
             #     'boolean': control.setting('netv3') == 'true',
             #     'plot': control.lang(30019), 'genre': 'Live'
             # }
-            {
-                'title': 'Life HD',
-                'action': 'play', 'isFolder': 'False',
-                'url': variables.Life_url,
-                'icon': 'LIFEHD.png',
-                'boolean': control.setting('life') == 'true',
-                'plot': control.lang(30008), 'genre': 'Pseudo-Live'
-            }
-            ,
+            # {
+            #     'title': 'Life HD',
+            #     'action': 'play', 'isFolder': 'False',
+            #     'url': variables.Life_url,
+            #     'icon': 'LIFEHD.png',
+            #     'boolean': control.setting('life') == 'true',
+            #     'plot': control.lang(30008), 'genre': 'Pseudo-Live'
+            # }
+            # ,
             {
                 'title': 'CANNALI Music',
                 'action': 'play', 'isFolder': 'False',
@@ -101,16 +101,16 @@ class Indexer:
                 'plot': control.lang(30009), 'genre': 'Live',
                 'infotype': 'music'
             }
-            ,
-            {
-                'title': 'Canadian Ethnic Web Radio',
-                'url': variables.CEWR_url,
-                'action': 'play', 'isFolder': 'False',
-                'icon': 'CANADIAN_ETHNIC_WEB_RADIO.jpg',
-                'boolean': control.setting('cewr') == 'true',
-                'genre': 'Live',
-                'infotype': 'music'
-            }
+            # ,
+            # {
+            #     'title': 'Canadian Ethnic Web Radio',
+            #     'url': variables.CEWR_url,
+            #     'action': 'play', 'isFolder': 'False',
+            #     'icon': 'CANADIAN_ETHNIC_WEB_RADIO.jpg',
+            #     'boolean': control.setting('cewr') == 'true',
+            #     'genre': 'Live',
+            #     'infotype': 'music'
+            # }
             ,
             {
                 'title': 'Voice Life & Style Mag',
@@ -125,24 +125,24 @@ class Indexer:
                 'action': 'open_url', 'isFolder': 'False', 'isPlayable': 'False',
                 'boolean': control.setting('external') == 'true'
             }
-            ,
-            {
-                'title': 'RIK',
-                'url': variables.RIK_url,
-                'action': 'play', 'isFolder': 'False',
-                'icon': 'RIK.png',
-                'boolean': control.setting('rik') == 'true',
-                'genre': 'Live'
-            }
-            ,
-            {
-                'title': 'SIGMA',
-                'url': variables.SIGMA_url,
-                'action': 'play', 'isFolder': 'False',
-                'icon': 'SIGMA.png',
-                'boolean': control.setting('sigma') == 'true',
-                'genre': 'Live'
-            }
+            # ,
+            # {
+            #     'title': 'RIK',
+            #     'url': variables.RIK_url,
+            #     'action': 'play', 'isFolder': 'False',
+            #     'icon': 'RIK.png',
+            #     'boolean': control.setting('rik') == 'true',
+            #     'genre': 'Live'
+            # }
+            # ,
+            # {
+            #     'title': 'SIGMA',
+            #     'url': variables.SIGMA_url,
+            #     'action': 'play', 'isFolder': 'False',
+            #     'icon': 'SIGMA.png',
+            #     'boolean': control.setting('sigma') == 'true',
+            #     'genre': 'Live'
+            # }
             # ,
             # {
             #     'title': 'OMEGA CY',

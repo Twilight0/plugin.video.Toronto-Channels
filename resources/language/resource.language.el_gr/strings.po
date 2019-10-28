@@ -229,8 +229,8 @@ msgid "Show NETV Toronto 3"
 msgstr "Δείξε το NETV Toronto 3"
 
 msgctxt "#30054"
-msgid "Show Webcam stream"
-msgstr "Δείξε την ροή Webcam"
+msgid "Show BCI 24 News"
+msgstr "Δείξε το BCI 24 News"
 
 msgctxt "#30055"
 msgid ""

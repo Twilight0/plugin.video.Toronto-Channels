@@ -43,22 +43,6 @@ class Indexer:
             }
             ,
             # {
-            #     'title': 'NETV Toronto 2',
-            #     'action': 'play_yt_m3u', 'isFolder': 'False',
-            #     'url': variables.YT_Doc_playlist,
-            #     'icon': 'NETV_Toronto_2.png',
-            #     'boolean': control.setting('netv2') == 'true',
-            #     'plot': control.lang(30019), 'genre': 'Pseudo-Live'
-            # }
-            # ,
-            # {
-            #     'title': 'NETV Toronto 3',
-            #     'action': 'play', 'isFolder': 'False',
-            #     'icon': control.addonmedia('NETV_Toronto_3.png'),
-            #     'boolean': control.setting('netv3') == 'true',
-            #     'plot': control.lang(30019), 'genre': 'Live'
-            # }
-            # {
             #     'title': 'Life HD',
             #     'action': 'play', 'isFolder': 'False',
             #     'url': variables.Life_url,
@@ -74,6 +58,15 @@ class Indexer:
                 'icon': 'CANNALI_WEB_MUSIC.png',
                 'boolean': control.setting('cannali') == 'true',
                 'plot': control.lang(30007), 'genre': 'Live'
+            }
+            ,
+            {
+                'title': 'BCI 24 News',
+                'url': variables.NEWS_url,
+                'icon': 'BCI_24_News.png',
+                'action': 'play', 'isFolder': 'False',
+                'boolean': control.setting('news') == 'true',
+                'genre': 'Live'
             }
             # ,
             # {
@@ -124,68 +117,6 @@ class Indexer:
                 'url': 'https://www.bcimedia.net/',
                 'action': 'open_url', 'isFolder': 'False', 'isPlayable': 'False',
                 'boolean': control.setting('external') == 'true'
-            }
-            # ,
-            # {
-            #     'title': 'RIK',
-            #     'url': variables.RIK_url,
-            #     'action': 'play', 'isFolder': 'False',
-            #     'icon': 'RIK.png',
-            #     'boolean': control.setting('rik') == 'true',
-            #     'genre': 'Live'
-            # }
-            # ,
-            # {
-            #     'title': 'SIGMA',
-            #     'url': variables.SIGMA_url,
-            #     'action': 'play', 'isFolder': 'False',
-            #     'icon': 'SIGMA.png',
-            #     'boolean': control.setting('sigma') == 'true',
-            #     'genre': 'Live'
-            # }
-            # ,
-            # {
-            #     'title': 'OMEGA CY',
-            #     'url': variables.OMEGA_CY_url,
-            #     'action': 'play', 'isFolder': 'False',
-            #     'icon': 'OMEGA.png',
-            #     'boolean': control.setting('omega') == 'true',
-            #     'genre': 'Live'
-            # }
-            # ,
-            # {
-            #     'title': 'ALPHA CY',
-            #     'url': variables.ALPHA_CY_url,
-            #     'action': 'play_media', 'isFolder': 'False',
-            #     'image': control.addonmedia('ALPHA.png'),
-            #     'boolean': control.setting('alpha') == 'true',
-            #     'genre': 'Live'
-            # }
-            # ,
-            # {
-            #     'title': 'CAPITAL',
-            #     'url': variables.CAPITAL_url,
-            #     'action': 'play', 'isFolder': 'False',
-            #     'icon': 'CAPITAL.png',
-            #     'boolean': control.setting('capital') == 'true',
-            #     'genre': 'Live'
-            # }
-            # ,
-            # {
-            #     'title': 'PLUS',
-            #     'url': variables.PLUS_url,
-            #     'action': 'play', 'isFolder': 'False',
-            #     'icon': 'PLUS.png',
-            #     'boolean': control.setting('plus') == 'true',
-            #     'genre': 'Live'
-            # }
-            ,
-            {
-            'title': 'Webcam',
-            'url': variables.WEBCAM_url,
-            'action': 'play', 'isFolder': 'False',
-            'boolean': control.setting('webcam') == 'true',
-            'genre': 'Live'
             }
         ]
 

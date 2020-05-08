@@ -1,3 +1,7 @@
+2.4.1 (08-05-2019)
+- Update BCI news link
+- Update README
+
 2.4.0 (28-10-2019)
 - Renamed menu item "Webcam" to "BCI 24 News"
 - Removed some comments served as reserved code

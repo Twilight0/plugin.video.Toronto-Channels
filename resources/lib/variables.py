@@ -58,7 +58,7 @@ if setting('hls') == 'true':
     Life_url = 'http://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
     # Eugo24_url = 'http://162.219.176.210:18935/live/eugo242017p1a/playlist.m3u8'
     Cannali_url = 'http://live.streams.ovh:1935/cannali/cannali/playlist.m3u8'
-    NEWS_url = 'https://eco.streams.ovh/netmedia/netmedia/playlist.m3u8'
+    NEWS_url = 'https://live.streams.ovh:443/netmedia/netmedia/playlist.m3u8'
 
 else:
 
@@ -67,4 +67,4 @@ else:
     Life_url = 'rtmp://live.streams.ovh:1935/LIFEHD/LIFEHD'
     # Eugo24_url = 'rtmp://162.219.176.210:18935/live/eugo242017p1a'
     Cannali_url = 'rtmp://live.streams.ovh/cannali/cannali'
-    NEWS_url = 'rtmp://eco.streams.ovh/netmedia/netmedia'
+    NEWS_url = 'rtmps://live.streams.ovh:443/netmedia/netmedia'

@@ -1,3 +1,6 @@
+2.5.0 (22-05-2019)
+- Re-addition of RIK live streams
+
 2.4.1 (08-05-2019)
 - Update BCI news link
 - Update README

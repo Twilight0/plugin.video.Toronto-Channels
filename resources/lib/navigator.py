@@ -68,6 +68,33 @@ class Indexer:
                 'boolean': control.setting('news') == 'true',
                 'genre': 'Live'
             }
+            ,
+            {
+                'title': 'RIK Sat',
+                'url': variables.RIK_url,
+                'icon': 'RIK_SAT.png',
+                'action': 'play', 'isFolder': 'False',
+                'boolean': control.setting('rik') == 'true',
+                'genre': 'Live'
+            }
+            ,
+            {
+                'title': 'RIK Proto',
+                'url': variables.RIK_proto,
+                'icon': 'RIK_PROTO.png',
+                'action': 'play', 'isFolder': 'False',
+                'boolean': control.setting('rik') == 'true',
+                'genre': 'Live'
+            }
+            ,
+            {
+                'title': 'RIK Trito',
+                'url': variables.RIK_trito,
+                'icon': 'RIK_TRITO.png',
+                'action': 'play', 'isFolder': 'False',
+                'boolean': control.setting('rik') == 'true',
+                'genre': 'Live'
+            }
             # ,
             # {
             #     'title': 'Energy',

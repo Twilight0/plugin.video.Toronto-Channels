@@ -1,3 +1,6 @@
+2.5.1 (29-06-2020)
+- Updated youtube api key
+
 2.5.0 (22-05-2019)
 - Re-addition of RIK live streams
 

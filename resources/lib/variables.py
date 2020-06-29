@@ -20,25 +20,17 @@
 
 from __future__ import absolute_import
 from tulip.control import setting
+from base64 import b64decode
 
 
 Melodia_url = 'http://cast.streams.ovh:9086/live'
-# ALPHA_CY_url = 'plugin://plugin.video.alphatv.gr/?action=live&url=cy'
 RIK_url = 'http://l3.cloudskep.com/cybcsat/abr/playlist.m3u8'
 RIK_proto = 'http://r1.cloudskep.com/cybcr/cybc1/playlist.m3u8'
 RIK_trito = 'http://r1.cloudskep.com/cybcr/cybc3/playlist.m3u8'
 # SIGMA_url = 'http://81.21.47.74/hls/live.m3u8'
 # CEWR_url = 'http://147.135.252.4:10221/live'
-# OMEGA_CY_url = 'http://freeview.ashttp9.visionip.tv/live/tvnetwork-hellenictv-mega-hsslive-25f-4x3-SDh/chunklist.m3u8'
-# PLUS_url = 'http://freeview.ashttp9.visionip.tv/live/tvnetwork-hellenictv-plus_tv-hsslive-25f-4x3-SDh/chunklist.m3u8'
-# CAPITAL_url = 'http://freeview.ashttp9.visionip.tv/live/tvnetwork-hellenictv-htvcapital-hsslive-25f-4x3-SDh/chunklist.m3u8'
 YT_Channel = 'UCKXFDK9dRGcnwr7mWmzoY2w'
-# YT_Doc_playlist = 'http://alivegr.net/raw/docs.m3u'
-# YT_Kids_playlist = 'http://alivegr.net/raw/kids.m3u'
 mags_base_url = 'http://alivegr.net/bci_mags/index.txt'
-subscribe_url = 'https://bcimedia.net/order/cart.php?gid=1'
-status_url = 'https://bcimedia.net/order/handler.php?action=login&status={0}&licensekey={1}'
-account_status = 'https://bcimedia.net/order/clientarea.php?action=productdetails&id=1'
 
 # NETV_Toronto_url = ('https://www.netvtoronto.com/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOl1q0ndrutMfWv1ryEtrWl1q0ndrutMfWv1ryEtrWl3bSyxLSAxn0lM0ZDtG=')
 # Cannali_url = ('https://www.cannalimusic.com/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOl3nLuuD4sdzTngeVC2vrr3HinM00ys9JAhvUA2XPC3rFDZeZntCWmJmWmY5Tm3u4')
@@ -46,9 +38,9 @@ account_status = 'https://bcimedia.net/order/clientarea.php?action=productdetail
 
 
 yt_keys = {
-    'id': '498788153161-pe356urhr0uu2m98od6f72k0vvcdsij0.apps.googleusercontent.com',
-    'api_key': 'AIzaSyA8k1OyLGf03HBNl0byD511jr9cFWo2GR4',
-    'secret': 'e6RBIFCVh1Fm-IX87PVJjgUu'
+    'id': '160033273224-h19b0s1cnq2roc03b1nv0ldfm6obd7l2.apps.googleusercontent.com',
+    'api_key': b64decode('nZzbjNEWFNVLz5kakF3VUBDWrlkQ1lEVQJUYyp3VL9FR5NVY6lUQ'[::-1]),
+    'secret': 'mF2xh5M3XkHa5Itr1u58im9l'
 }
 
 

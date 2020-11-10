@@ -1,4 +1,4 @@
-# Addon Name: Toronto Channels
+# Addon Name: BCI Greek TV
 # Addon id: plugin.video.Toronto-Channels
 # Addon Provider: BCI Media Inc.
 msgid ""

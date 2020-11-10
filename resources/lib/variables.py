@@ -30,7 +30,7 @@ RIK_trito = 'http://r1.cloudskep.com/cybcr/cybc3/playlist.m3u8'
 # SIGMA_url = 'http://81.21.47.74/hls/live.m3u8'
 # CEWR_url = 'http://147.135.252.4:10221/live'
 YT_Channel = 'UCKXFDK9dRGcnwr7mWmzoY2w'
-mags_base_url = 'http://alivegr.net/bci_mags/index.txt'
+mags_base_url = 'https://alivegr.net/bci_mags/index.txt'
 
 # NETV_Toronto_url = ('https://www.netvtoronto.com/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOl1q0ndrutMfWv1ryEtrWl1q0ndrutMfWv1ryEtrWl3bSyxLSAxn0lM0ZDtG=')
 # Cannali_url = ('https://www.cannalimusic.com/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOl3nLuuD4sdzTngeVC2vrr3HinM00ys9JAhvUA2XPC3rFDZeZntCWmJmWmY5Tm3u4')
@@ -46,11 +46,11 @@ yt_keys = {
 
 if setting('hls') == 'true':
 
-    NETV_Toronto_url = 'http://live.netvtoronto.com:1935/NetvToronto/NetvToronto/playlist.m3u8'
+    NETV_Toronto_url = 'https://live.netvtoronto.com:1935/NetvToronto/NetvToronto/playlist.m3u8'
     # NETV_Toronto_2_url = 'http://162.219.176.210/live/eugo242017p1a/playlist.m3u8'
-    Life_url = 'http://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
+    Life_url = 'https://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
     # Eugo24_url = 'http://162.219.176.210:18935/live/eugo242017p1a/playlist.m3u8'
-    Cannali_url = 'http://live.streams.ovh:1935/cannali/cannali/playlist.m3u8'
+    Cannali_url = 'https://live.streams.ovh:1935/cannali/cannali/playlist.m3u8'
     NEWS_url = 'https://live.streams.ovh:443/netmedia/netmedia/playlist.m3u8'
 
 else:

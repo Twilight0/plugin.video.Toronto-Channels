@@ -17,10 +17,11 @@
         You should have received a copy of the GNU General Public License
         along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
-
+from __future__ import absolute_import
 from tulip import control, directory, client
-from resources.lib import variables
-from resources.lib.tools import magazine_list
+from tulip.compat import range
+from . import variables
+from .tools import magazine_list
 
 
 class Indexer:
@@ -34,10 +35,10 @@ class Indexer:
 
         self.list = [
             {
-                'title': 'NETV Toronto',
+                'title': 'NET Toronto',
                 'action': 'play', 'isFolder': 'False',
                 'url': variables.NETV_Toronto_url,
-                'icon': 'NETV_Toronto.png',
+                'icon': 'NET_Toronto.png',
                 'boolean': control.setting('netv') == 'true',
                 'plot': control.lang(30006), 'genre': 'Live'
             }
@@ -55,7 +56,7 @@ class Indexer:
                 'title': 'CANNALI Music',
                 'action': 'play', 'isFolder': 'False',
                 'url': variables.Cannali_url,
-                'icon': 'CANNALI_WEB_MUSIC.png',
+                'icon': 'CANNALI.png',
                 'boolean': control.setting('cannali') == 'true',
                 'plot': control.lang(30007), 'genre': 'Live'
             }
@@ -164,7 +165,7 @@ class Indexer:
 
         pages = []
 
-        for page in range(1, number + 1):
+        for page in list(range(1, number + 1)):
 
             string = str(page)
 
@@ -201,8 +202,7 @@ class Indexer:
             li.setArt({'poster': mag['image'], 'thumb': mag['image'], 'fanart': control.addonInfo('fanart')})
             li.setInfo('image', {'title': mag['title'], 'picturepath': mag['url']})
             url = mag['url']
-            isFolder = True
 
-            control.addItem(int(self.argv[1]), url, li, isFolder)
+            control.addItem(int(self.argv[1]), url, li, True)
 
         control.directory(int(self.argv[1]))

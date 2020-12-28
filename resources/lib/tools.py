@@ -25,7 +25,6 @@ from tulip.compat import unquote_plus, urljoin
 from random import shuffle
 from tulip import control, client, directory
 from . import variables
-from base64 import b64decode as decoder
 from youtube_registration import register_api_keys
 
 
@@ -209,14 +208,7 @@ def keymap_edit():
 def youtube_channel(url):
 
     register_api_keys(
-        control.addonInfo('id'), variables.yt_keys['api_key'], variables.yt_keys['id'], variables.yt_keys['secret']
+        control.addonInfo('id'), variables.keys['api_key'], variables.keys['id'], variables.keys['secret']
     )
 
     control.execute('Container.Update({0},return)'.format(url))
-
-
-def substitute(regex):
-
-    substitution = decoder(regex.swapcase())
-
-    return substitution

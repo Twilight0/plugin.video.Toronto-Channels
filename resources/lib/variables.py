@@ -19,6 +19,8 @@
 """
 
 from __future__ import absolute_import
+import json
+from zlib import decompress
 from tulip.control import setting
 from base64 import b64decode
 
@@ -37,11 +39,10 @@ mags_base_url = 'https://alivegr.net/bci_mags/index.txt'
 # Life_url = ('https://www.lifehd.magicstreams.net/', 'Ahr0Chm6lY9SAxzLlNn0CMvHBxmUB3zOlZHnBw1uwMPAsfaVoe1TBvrAALPiuc9JAhvUA2XPC3rFDZe5mJeXmJmWmdiUBtn1oa==')
 
 
-yt_keys = {
-    'id': '160033273224-h19b0s1cnq2roc03b1nv0ldfm6obd7l2.apps.googleusercontent.com',
-    'api_key': b64decode('nZzbjNEWFNVLz5kakF3VUBDWrlkQ1lEVQJUYyp3VL9FR5NVY6lUQ'[::-1]),
-    'secret': 'mF2xh5M3XkHa5Itr1u58im9l'
-}
+scramble = (
+    'eJwVzM0OgiAAAOBXcZzLpaiwblmt2cHNXHlshoSm/AREWuvdmw/wfV/QNWDtgRAhjCMYJzAMlzJY6TbRSpgWUx3A2A1INOZppUNxyx5+rZTxmZRsoC'
+    '9DNZHCUmF9IjlYeKBW3bWn09xusk9dTinKmzHYVq6fduKENWHBLXsXZKyY40c+nmdlKNHUziiP9gfMLrBitHAFx6S7K8zSEvz+QP85Rw=='
+)
 
 
 if setting('hls') == 'true':
@@ -61,3 +62,6 @@ else:
     # Eugo24_url = 'rtmp://162.219.176.210:18935/live/eugo242017p1a'
     Cannali_url = 'rtmp://live.streams.ovh/cannali/cannali'
     NEWS_url = 'rtmps://live.streams.ovh:443/netmedia/netmedia'
+
+
+keys = json.loads(decompress(b64decode(scramble)))

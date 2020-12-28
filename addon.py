@@ -90,8 +90,8 @@ elif action == 'mag_index':
 
 elif action == 'settings':
 
-    from tulip.control import Settings
-    Settings()
+    from tulip.control import openSettings
+    openSettings()
 
 elif action == 'keymap_edit':
 
@@ -101,9 +101,3 @@ elif action == 'open_url':
 
     from tulip.control import open_web_browser
     open_web_browser(url)
-
-elif action == 'account_info':
-
-    from tulip.control import open_web_browser
-    from resources.lib.variables import account_status
-    open_web_browser(account_status)

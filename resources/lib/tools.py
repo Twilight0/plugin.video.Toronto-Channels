@@ -104,23 +104,23 @@ def radio_player():
 
     lista = ['Radio Melodia Toronto', 'Canadian Ethnic Web Radio']
 
-    selection = control.selectDialog(lista)
+    # selection = control.selectDialog(lista)
 
-    if selection == 0:
+    # if selection == 0:
 
-        listitem = control.item(label=lista[0])
-        listitem.setInfo('music', {'title': lista[0], 'genre': 'Greek Music'})
-        listitem.setArt({'icon': control.addonmedia('RADIO_MELODIA_TORONTO.png'), 'thumb': control.addonmedia('RADIO_MELODIA_TORONTO.png')})
+    listitem = control.item(label=lista[0])
+    listitem.setInfo('music', {'title': lista[0], 'genre': 'Greek Music'})
+    listitem.setArt({'icon': control.addonmedia('RADIO_MELODIA_TORONTO.png'), 'thumb': control.addonmedia('RADIO_MELODIA_TORONTO.png')})
 
-        control.player().play(item=variables.Melodia_url, listitem=listitem)
+    control.player().play(item=variables.Melodia_url, listitem=listitem)
 
-    elif selection == 1:
-
-        listitem = control.item(label=lista[1])
-        listitem.setInfo('music', {'title': lista[1], 'genre': 'Ethnic Music'})
-        listitem.setArt({'icon': control.addonmedia('CANADIAN_ETHNIC_WEB_RADIO.jpg'), 'thumb': control.addonmedia('CANADIAN_ETHNIC_WEB_RADIO.jpg')})
-
-        control.player().play(item=variables.CEWR_url, listitem=listitem)
+    # elif selection == 1:
+    #
+    #     listitem = control.item(label=lista[1])
+    #     listitem.setInfo('music', {'title': lista[1], 'genre': 'Ethnic Music'})
+    #     listitem.setArt({'icon': control.addonmedia('CANADIAN_ETHNIC_WEB_RADIO.jpg'), 'thumb': control.addonmedia('CANADIAN_ETHNIC_WEB_RADIO.jpg')})
+    #
+    #     control.player().play(item=variables.CEWR_url, listitem=listitem)
 
 
 def keymap_edit():

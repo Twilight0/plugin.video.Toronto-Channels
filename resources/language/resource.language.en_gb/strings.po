@@ -231,15 +231,15 @@ msgid "Show BCI 24 News"
 msgstr ""
 
 msgctxt "#30055"
-msgid ""
+msgid "Show Health Channel"
 msgstr ""
 
 msgctxt "#30056"
-msgid ""
+msgid "Show Food Channel"
 msgstr ""
 
 msgctxt "#30057"
-msgid ""
+msgid "Show CETN"
 msgstr ""
 
 msgctxt "#30058"

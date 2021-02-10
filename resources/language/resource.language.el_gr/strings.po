@@ -233,16 +233,16 @@ msgid "Show BCI 24 News"
 msgstr "Δείξε το BCI 24 News"
 
 msgctxt "#30055"
-msgid ""
-msgstr ""
+msgid "Show Health Channel"
+msgstr "Δείξε το Health Channel"
 
 msgctxt "#30056"
-msgid ""
-msgstr ""
+msgid "Show Food Channel"
+msgstr "Δείξε το Food Channel"
 
 msgctxt "#30057"
-msgid ""
-msgstr ""
+msgid "Show CETN"
+msgstr "Δείξε το CETN"
 
 msgctxt "#30058"
 msgid ""

@@ -71,6 +71,33 @@ class Indexer:
             }
             ,
             {
+                'title': 'Food Channel',
+                'url': variables.FOOD_url,
+                'icon': 'FOOD.png',
+                'action': 'play', 'isFolder': 'False',
+                'boolean': control.setting('food') == 'true',
+                'genre': 'Live'
+            }
+            ,
+            {
+                'title': 'CETN (Canadian Ethnic TV Network)',
+                'url': variables.CETN_url,
+                'icon': 'CETN.png',
+                'action': 'play', 'isFolder': 'False',
+                'boolean': control.setting('cetn') == 'true',
+                'genre': 'Live'
+            }
+            ,
+            {
+                'title': 'Health Channel',
+                'url': variables.HEALTH_url,
+                'icon': 'HEALTH.png',
+                'action': 'play', 'isFolder': 'False',
+                'boolean': control.setting('health') == 'true',
+                'genre': 'Live'
+            }
+            ,
+            {
                 'title': 'RIK Sat',
                 'url': variables.RIK_url,
                 'icon': 'RIK_SAT.png',

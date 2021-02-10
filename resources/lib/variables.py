@@ -45,23 +45,14 @@ scramble = (
 )
 
 
-if setting('hls') == 'true':
-
-    NETV_Toronto_url = 'https://live.netvtoronto.com:1935/NetvToronto/NetvToronto/playlist.m3u8'
-    # NETV_Toronto_2_url = 'http://162.219.176.210/live/eugo242017p1a/playlist.m3u8'
-    Life_url = 'https://live.streams.ovh:1935/LIFEHD/LIFEHD/playlist.m3u8'
-    # Eugo24_url = 'http://162.219.176.210:18935/live/eugo242017p1a/playlist.m3u8'
-    Cannali_url = 'https://live.streams.ovh:1935/cannali/cannali/playlist.m3u8'
-    NEWS_url = 'https://live.streams.ovh:443/netmedia/netmedia/playlist.m3u8'
-
-else:
-
-    NETV_Toronto_url = 'rtmp://live.netvtoronto.com/NetvToronto/NetvToronto'
-    # NETV_Toronto_2_url = 'rtmp://162.219.176.210/live/eugo242017p1a'
-    Life_url = 'rtmp://live.streams.ovh:1935/LIFEHD/LIFEHD'
-    # Eugo24_url = 'rtmp://162.219.176.210:18935/live/eugo242017p1a'
-    Cannali_url = 'rtmp://live.streams.ovh/cannali/cannali'
-    NEWS_url = 'rtmps://live.streams.ovh:443/netmedia/netmedia'
+NETV_Toronto_url = 'https://live.streams.ovh:443/NetvToronto/NetvToronto/playlist.m3u8'
+# NETV_Toronto_2_url = 'http://162.219.176.210/live/eugo242017p1a/playlist.m3u8'
+# Eugo24_url = 'http://162.219.176.210:18935/live/eugo242017p1a/playlist.m3u8'
+Cannali_url = 'https://live.streams.ovh:443/cannali/cannali/playlist.m3u8'
+NEWS_url = 'https://live.streams.ovh:443/netmedia/netmedia/playlist.m3u8'
+FOOD_url = 'https://channel.streams.ovh:19360/foodchannel/foodchannel.m3u8'
+CETN_url = 'https://channel.streams.ovh:19360/cetn/cetn.m3u8'
+HEALTH_url = 'https://eco.streams.ovh/healthchannel/healthchannel/playlist.m3u8'
 
 
 keys = json.loads(decompress(b64decode(scramble)))

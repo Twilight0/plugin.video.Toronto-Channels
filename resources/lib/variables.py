@@ -21,11 +21,10 @@
 from __future__ import absolute_import
 import json
 from zlib import decompress
-from tulip.control import setting
 from base64 import b64decode
 
 
-Melodia_url = 'http://cast.streams.ovh:9086/live'
+Melodia_url = 'https://cast.streams.ovh/sc/melodiatoronto/stream'
 RIK_url = 'http://l3.cloudskep.com/cybcsat/abr/playlist.m3u8'
 RIK_proto = 'http://r1.cloudskep.com/cybcr/cybc1/playlist.m3u8'
 RIK_trito = 'http://r1.cloudskep.com/cybcr/cybc3/playlist.m3u8'

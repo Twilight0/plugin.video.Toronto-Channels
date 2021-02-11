@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.Toronto-Channels" name="BCI Greek TV" version="2.8.0" provider-name="BCI Media Inc.">
+<addon id="plugin.video.Toronto-Channels" name="BCI Greek TV" version="2.8.1" provider-name="BCI Media Inc.">
     <requires>
         <import addon="xbmc.addon" version="16.1.000"/>
         <import addon="plugin.video.youtube" version="6.8.8"/>
